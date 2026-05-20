@@ -1,0 +1,46 @@
+{
+  "name": "@pathway/design-system",
+  "version": "0.1.0",
+  "description": "Pathway platform design system — Chakra theme, tokens, and shared UI (Netfusion-aligned brand layer)",
+  "license": "MIT",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    ".": "./src/index.ts",
+    "./primitives": "./src/components/primitives/index.ts",
+    "./primitives/*": "./src/components/primitives/*",
+    "./marketing": "./src/components/marketing/index.ts",
+    "./marketing/*": "./src/components/marketing/*",
+    "./foundations": "./src/foundations/index.ts",
+    "./theme/create-pathway-system": "./src/theme/create-pathway-system.ts",
+    "./theme/pathway-theme-config": "./src/theme/pathway-theme-config.ts",
+    "./tokens": "./src/tokens/index.ts"
+  },
+  "peerDependencies": {
+    "@chakra-ui/react": "^3.35.0",
+    "@emotion/react": "^11.14.0",
+    "next": ">=14",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": false
+    }
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "prepublishOnly": "node scripts/validate-before-publish.mjs",
+    "pack:check": "npm pack --dry-run"
+  }
+}
