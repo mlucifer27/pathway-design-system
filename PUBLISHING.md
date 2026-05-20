@@ -21,20 +21,22 @@ If `@pathway` is taken by someone else, pick another scope and update `name` in 
 
 The package is **MIT** licensed. `LICENSE` is included in the npm tarball (copyright Pathway Sports Group, 2026). To change the holder or year, edit `LICENSE` and keep `package.json` `"license": "MIT"` in sync.
 
-### 3. Automation token (for GitHub Actions)
+### 3. GitHub repo and automation token
 
-1. npm → Account → **Access Tokens** → **Generate New Token** → type **Automation**.
-2. In GitHub: repo **Settings → Secrets → Actions** → add `NPM_TOKEN` with that value.
+**Repository:** [github.com/Pathway-Sports-Group/pathway-design-system](https://github.com/Pathway-Sports-Group/pathway-design-system)
+
+1. npm → Account → **Access Tokens** → **Generate New Token** → type **Automation** (publish + read).
+2. GitHub → **Pathway-Sports-Group/pathway-design-system** → **Settings → Secrets and variables → Actions** → **New repository secret** → name `NPM_TOKEN`, paste the token.
+3. Push to `main` (or run the **Publish to npm** workflow manually under Actions). The workflow publishes only when the version in `package.json` is **not** already on npm.
 
 ---
 
 ## Pre-publish checklist (local)
 
-From `pathway-design-system/`:
+From the repo root:
 
 ```bash
-cd pathway-design-system
-npm run pack:check          # lists tarball files
+npm run pack:check
 node scripts/validate-before-publish.mjs
 ```
 
@@ -64,7 +66,6 @@ transpilePackages: ["@pathway/design-system"],
 ## First publish (manual)
 
 ```bash
-cd pathway-design-system
 npm login
 npm publish --access public
 ```
@@ -97,7 +98,7 @@ In each app or repo root `.npmrc` (do **not** commit tokens):
 //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 ```
 
-GitHub Actions already sets `registry-url` and `NODE_AUTH_TOKEN` in `.github/workflows/publish-design-system.yml`.
+The **Publish to npm** workflow in this repo sets `registry-url` and uses `NPM_TOKEN`.
 
 ### Install in an app
 
@@ -116,7 +117,6 @@ Peer dependencies must be installed in the app (see `package.json` `peerDependen
 3. Publish:
 
 ```bash
-cd pathway-design-system
 npm publish --access public
 ```
 
@@ -131,14 +131,18 @@ npm publish --access public
 
 ---
 
-## GitHub Actions publish
+## Automatic publish (GitHub Actions)
 
-Workflow: `.github/workflows/publish-design-system.yml`
+Workflow: `.github/workflows/publish-npm.yml` in this repo.
 
-- Triggers on push to `main` when `pathway-design-system/**` changes, or **workflow_dispatch**.
-- Requires secret `NPM_TOKEN`.
+| Trigger | Behavior |
+|---------|----------|
+| Push to `main` | Validate → publish if version is new on npm |
+| **workflow_dispatch** | Same (manual run from Actions tab) |
 
-To avoid publishing on every commit, use manual dispatch only or add version-tag gating later.
+**Requires:** repository secret `NPM_TOKEN` (npm Automation token).
+
+**Release process:** bump `version` in `package.json`, commit, push to `main`. CI publishes `@pathway/design-system@<version>`. Pushes without a version bump skip publish (no failed job).
 
 ---
 

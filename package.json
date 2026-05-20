@@ -2,6 +2,14 @@
   "name": "@pathway/design-system",
   "version": "0.1.0",
   "description": "Pathway platform design system — Chakra theme, tokens, and shared UI (Netfusion-aligned brand layer)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pathway-Sports-Group/pathway-design-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Pathway-Sports-Group/pathway-design-system/issues"
+  },
+  "homepage": "https://github.com/Pathway-Sports-Group/pathway-design-system#readme",
   "license": "MIT",
   "sideEffects": false,
   "publishConfig": {
