@@ -31,6 +31,6 @@ Sibling folders in the editor are **separate projects**. Apps must depend on thi
 
 MIT — see [LICENSE](./LICENSE).
 
-Repo: [Pathway-Sports-Group/pathway-design-system](https://github.com/Pathway-Sports-Group/pathway-design-system). Pushes to `main` publish to npm via GitHub Actions (see `PUBLISHING.md`).
+Repo: [mlucifer27/pathway-design-system](https://github.com/mlucifer27/pathway-design-system). Pushes to `main` publish to npm via GitHub Actions (see `PUBLISHING.md`).
 
 See `ARCHITECTURE.md` and `PUBLISHING.md`.

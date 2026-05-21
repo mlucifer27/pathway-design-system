@@ -23,10 +23,10 @@ The package is **MIT** licensed. `LICENSE` is included in the npm tarball (copyr
 
 ### 3. GitHub repo and automation token
 
-**Repository:** [github.com/Pathway-Sports-Group/pathway-design-system](https://github.com/Pathway-Sports-Group/pathway-design-system)
+**Repository:** [github.com/mlucifer27/pathway-design-system](https://github.com/mlucifer27/pathway-design-system)
 
 1. npm → Account → **Access Tokens** → **Generate New Token** → type **Automation** (publish + read).
-2. GitHub → **Pathway-Sports-Group/pathway-design-system** → **Settings → Secrets and variables → Actions** → **New repository secret** → name `NPM_TOKEN`, paste the token.
+2. GitHub → **mlucifer27/pathway-design-system** → **Settings → Secrets and variables → Actions** → **New repository secret** → name `NPM_TOKEN`, paste the token.
 3. Push to `main` (or run the **Publish to npm** workflow manually under Actions). The workflow publishes only when the version in `package.json` is **not** already on npm.
 
 ---
@@ -172,6 +172,7 @@ Not published: `ARCHITECTURE.md`, `PUBLISHING.md`, scripts (validation runs loca
 | Error | Fix |
 |-------|-----|
 | `ENEEDAUTH` / `need auth` in GitHub Actions | Add repository secret **`NPM_TOKEN`** (npm **Automation** token). `NODE_AUTH_TOKEN` must be set when `setup-node` runs — see `.github/workflows/publish-npm.yml` |
+| `E422` provenance / repository mismatch | `package.json` `repository.url` must match the GitHub repo running Actions (this repo: `mlucifer27/pathway-design-system`) |
 | `402 Payment Required` on publish | Use `--access public` for scoped package |
 | `403 Forbidden` / scope | Token user must be a member of npm org **pathway-sg** with publish rights |
 | App build: cannot resolve module | Run `npm install`; check version exists on npm |
