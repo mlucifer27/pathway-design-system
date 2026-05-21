@@ -34,6 +34,10 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@pathway-sg"
           always-auth: true
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Validate package
         run: npm run validate
