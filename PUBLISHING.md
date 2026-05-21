@@ -171,8 +171,9 @@ Not published: `ARCHITECTURE.md`, `PUBLISHING.md`, scripts (validation runs loca
 
 | Error | Fix |
 |-------|-----|
+| `ENEEDAUTH` / `need auth` in GitHub Actions | Add repository secret **`NPM_TOKEN`** (npm **Automation** token). `NODE_AUTH_TOKEN` must be set when `setup-node` runs — see `.github/workflows/publish-npm.yml` |
 | `402 Payment Required` on publish | Use `--access public` for scoped package |
-| `403 Forbidden` / scope | Create org `@pathway` or change package name |
+| `403 Forbidden` / scope | Token user must be a member of npm org `@pathway` with publish rights |
 | App build: cannot resolve module | Run `npm install`; check version exists on npm |
 | App build: syntax error in node_modules | Add `transpilePackages: ["@pathway/design-system"]` |
 | `ERESOLVE` peer deps | Install matching `@chakra-ui/react`, `next`, `react` in the app |
