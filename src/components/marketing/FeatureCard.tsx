@@ -6,12 +6,14 @@ import {
   Grid,
   Heading,
   Icon,
+  Stack,
   Text,
 } from "@chakra-ui/react";
-import { MarketingButtonOutline } from "./MarketingButton";
+import { BrandButtonOutline } from "../primitives/BrandButton";
 import type { ElementType, ReactNode } from "react";
-import { SectionHeader } from "./SectionHeader";
-import { marketingSectionPy } from "./section-spacing";
+import { netfusionMotionDelay } from "./netfusion-motion";
+import { MarketingSection } from "./MarketingSection";
+import { SectionHeaderBlock } from "./SectionHeaderBlock";
 
 export type FeatureCardItem = {
   id: string;
@@ -30,47 +32,48 @@ export type FeatureCardItem = {
 
 export type FeatureCardProps = FeatureCardItem;
 
+/** Netfusion `.latest-service-card` */
 export function FeatureCard({
   title,
   tagline,
   description,
   icon: IconComponent,
-  iconBg = "marketing.solid",
+  iconBg: _iconBg,
   badge,
   badgeVariant = "muted",
   href,
   ctaLabel,
   external,
   disabled,
-}: FeatureCardProps) {
+  stacked: _stacked = true,
+}: FeatureCardProps & { stacked?: boolean }) {
   return (
-    <Box className="glass-panel" rounded="card" p="6">
-      <Flex align="flex-start" gap="4">
+    <Box className="glass-panel" rounded="panel" p={{ base: "8", md: "10" }} h="full">
+      <Flex align="flex-start" gap={{ base: "4", md: "8" }} direction={{ base: "column", md: "row" }}>
         {IconComponent ? (
           <Flex
-            bg={iconBg}
-            color="marketing.contrast"
-            boxSize="14"
-            rounded="card"
+            className="netfusion-icon-box"
+            boxSize={{ base: "16", md: "24" }}
             align="center"
             justify="center"
-            fontSize="2xl"
             flexShrink={0}
           >
-            <Icon as={IconComponent} aria-hidden />
+            <Icon as={IconComponent} boxSize={{ base: "7", md: "10" }} aria-hidden />
           </Flex>
         ) : null}
         <Box flex="1">
-          <Flex align="center" gap="2" mb="1" wrap="wrap">
-            <Heading as="h4" fontWeight="900" fontSize="xl" className="marketing-heading">
+          <Flex align="center" gap="2" mb="2" wrap="wrap">
+            <Heading as="h3" fontSize="xl" fontWeight="500" color="fg.heading" lineHeight="initial">
               {title}
             </Heading>
             {badge ? (
               <Badge
-                bg={badgeVariant === "live" ? "marketing.muted" : "bg.glass"}
-                color={badgeVariant === "live" ? "marketing.fg" : "fg.muted"}
+                bg={badgeVariant === "live" ? "brand.solid" : "transparent"}
+                color={badgeVariant === "live" ? "brand.contrast" : "fg.muted"}
+                borderWidth={badgeVariant === "live" ? "0" : "1px"}
+                borderColor="border.subtle"
                 fontSize="xs"
-                fontWeight="bold"
+                fontWeight="600"
                 px="2"
                 py="1"
                 rounded="full"
@@ -80,26 +83,26 @@ export function FeatureCard({
             ) : null}
           </Flex>
           {tagline ? (
-            <Text color="fg.muted" fontWeight="semibold" fontSize="sm" mb="2">
+            <Text color="fg.muted" fontWeight="600" fontSize="sm" mb="2">
               {tagline}
             </Text>
           ) : null}
-          <Text color="fg.muted" fontSize="sm" lineHeight="relaxed" mb="4">
+          <Text color="fg.DEFAULT" fontSize="md" lineHeight="24px" mb="4">
             {description}
           </Text>
           {ctaLabel && href && !disabled ? (
-            <MarketingButtonOutline asChild size="sm">
+            <BrandButtonOutline asChild size="sm">
               <Link
                 href={href}
                 {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
               >
                 {ctaLabel}
               </Link>
-            </MarketingButtonOutline>
+            </BrandButtonOutline>
           ) : ctaLabel && disabled ? (
-            <MarketingButtonOutline size="sm" disabled>
+            <BrandButtonOutline size="sm" disabled>
               {ctaLabel}
-            </MarketingButtonOutline>
+            </BrandButtonOutline>
           ) : null}
         </Box>
       </Flex>
@@ -129,18 +132,42 @@ export function FeatureCardGrid({
     md: columns.md ? `repeat(${columns.md}, 1fr)` : undefined,
     lg: columns.lg ? `repeat(${columns.lg}, 1fr)` : undefined,
   };
+  const useGrid = (columns.md ?? 1) > 1 || (columns.lg ?? 1) > 1;
 
   return (
-    <Box as="section" py={marketingSectionPy} px="4">
-      <Box maxW="6xl" mx="auto">
-        <SectionHeader shortLabel={shortLabel} title={title} description={description} />
-        <Grid templateColumns={templateColumns} gap="6">
-          {items.map((item) => (
-            <FeatureCard key={item.id} {...item} />
+    <MarketingSection animate={false}>
+      <SectionHeaderBlock
+        shortLabel={shortLabel}
+        title={title}
+        description={description}
+        align="center"
+      />
+      {useGrid ? (
+        <Grid templateColumns={templateColumns} gap="8">
+          {items.map((item, index) => (
+            <Box
+              key={item.id}
+              className="animate-fade-up"
+              style={{ animationDelay: netfusionMotionDelay(index) }}
+            >
+              <FeatureCard {...item} stacked={false} />
+            </Box>
           ))}
         </Grid>
-        {footer}
-      </Box>
-    </Box>
+      ) : (
+        <Stack gap="30px">
+          {items.map((item, index) => (
+            <Box
+              key={item.id}
+              className="animate-fade-up"
+              style={{ animationDelay: netfusionMotionDelay(index) }}
+            >
+              <FeatureCard {...item} stacked />
+            </Box>
+          ))}
+        </Stack>
+      )}
+      {footer}
+    </MarketingSection>
   );
 }

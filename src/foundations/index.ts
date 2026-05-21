@@ -5,6 +5,7 @@ export {
   type PathwayThemeInitScriptProps,
 } from "./theme-init-script";
 export {
+  COLLEGE_COACH_CONTAINER_MAX_W,
   DASHBOARD_CONTAINER_MAX_W,
   DASHBOARD_CONTAINER_PX,
   DASHBOARD_CONTAINER_PB,

@@ -28,7 +28,7 @@ export function PublicSiteFooter({
     <Box
       as="footer"
       bg="bg.glass"
-      backdropFilter="blur(16px)"
+      backdropFilter="blur(6.5px)"
       borderTopWidth="1px"
       borderColor="border.DEFAULT"
       py="10"
@@ -45,12 +45,7 @@ export function PublicSiteFooter({
           mb="8"
         >
           <Box>
-            <Text
-              fontWeight="900"
-              color="fg.DEFAULT"
-              fontSize="xl"
-              className="marketing-heading"
-            >
+            <Text fontWeight="700" color="fg.heading" fontSize="xl">
               {brandTitle}
             </Text>
             <Text fontSize="sm" mt="1" color="fg.muted">

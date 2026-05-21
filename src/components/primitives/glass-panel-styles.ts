@@ -1,4 +1,11 @@
-import type { ButtonProps, TextProps } from "@chakra-ui/react";
+import type {
+  BadgeProps,
+  BoxProps,
+  ButtonProps,
+  TableRowProps,
+  TextProps,
+} from "@chakra-ui/react";
+import { NETFUSION_REFERENCE } from "../../tokens/netfusion-reference";
 
 /** Body / caption text on dark glass panels (WCAG-friendly on `bg.glass`). */
 export const glassPanelMutedTextProps: TextProps = {
@@ -27,4 +34,31 @@ export const glassPanelButtonProps: ButtonProps = {
     borderColor: "border.strong",
     color: "fg.DEFAULT",
   },
+};
+
+/** Shared glass surface for inputs, textareas, and native selects (not full panels). */
+export const glassPanelFieldProps = {
+  bg: "bg.glass",
+  backdropFilter: "blur(6.5px)",
+  borderWidth: "1px",
+  borderColor: "border.netfusion",
+  boxShadow: NETFUSION_REFERENCE.glassShadow,
+  color: "fg.DEFAULT",
+} satisfies BoxProps;
+
+/** Compact glass chip (e.g. status badges on dashboard cards). */
+export const glassPanelBadgeProps: BadgeProps = {
+  bg: "bg.glass",
+  backdropFilter: "blur(6.5px)",
+  borderWidth: "1px",
+  borderColor: "border.netfusion",
+  boxShadow: NETFUSION_REFERENCE.glassShadow,
+};
+
+/** Table header row on glass-backed data tables. */
+export const glassPanelTableHeaderProps: TableRowProps = {
+  bg: "bg.glass",
+  backdropFilter: "blur(6.5px)",
+  borderBottomWidth: "1px",
+  borderColor: "border.netfusion",
 };

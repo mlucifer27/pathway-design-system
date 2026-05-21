@@ -1,7 +1,6 @@
 import { NETFUSION_REFERENCE } from "./netfusion-reference";
 
 const darkBg = NETFUSION_REFERENCE.darkCanvas;
-const darkSection = NETFUSION_REFERENCE.sectionSurface;
 const lightBg = NETFUSION_REFERENCE.lightCanvas;
 
 /** Semantic tokens — shared across marketing and product surfaces. */
@@ -10,13 +9,13 @@ export const pathwaySemanticColorTokens = {
     DEFAULT: { value: { _light: lightBg, _dark: darkBg } },
     canvas: { value: "transparent" },
     section: {
-      value: { _light: "#EEF5F8", _dark: darkSection },
+      value: { _light: "#EEF5F8", _dark: darkBg },
     },
     subtle: {
       value: { _light: "rgba(15, 23, 42, 0.04)", _dark: "rgba(255, 255, 255, 0.02)" },
     },
     surface: {
-      value: { _light: "rgba(255, 255, 255, 0.9)", _dark: "rgba(20, 32, 58, 0.6)" },
+      value: { _light: "rgba(255, 255, 255, 0.9)", _dark: NETFUSION_REFERENCE.cardSurface },
     },
     elevated: {
       value: { _light: "#FFFFFF", _dark: "rgba(255, 255, 255, 0.08)" },
@@ -25,7 +24,13 @@ export const pathwaySemanticColorTokens = {
     panel: {
       value: {
         _light: "rgba(255, 255, 255, 0.98)",
-        _dark: "rgba(6, 6, 6, 0.94)",
+        _dark: "#121212",
+      },
+    },
+    card: {
+      value: {
+        _light: "#FFFFFF",
+        _dark: NETFUSION_REFERENCE.cardSurface,
       },
     },
     muted: {
@@ -33,9 +38,8 @@ export const pathwaySemanticColorTokens = {
     },
     glass: {
       value: {
-        _light: "#FFFFFF",
-        _dark:
-          "linear-gradient(110deg, rgba(54, 54, 54, 0.29) 0%, rgba(54, 54, 54, 0.12) 100%)",
+        _light: NETFUSION_REFERENCE.glassGradientLight,
+        _dark: NETFUSION_REFERENCE.glassGradientDark,
       },
     },
     glassHover: {
@@ -45,6 +49,9 @@ export const pathwaySemanticColorTokens = {
   fg: {
     DEFAULT: {
       value: { _light: "#0F172A", _dark: NETFUSION_REFERENCE.textBodyDark },
+    },
+    heading: {
+      value: { _light: "#0F172A", _dark: NETFUSION_REFERENCE.textHeadingDark },
     },
     muted: {
       value: { _light: "rgba(15, 23, 42, 0.65)", _dark: NETFUSION_REFERENCE.textMutedDark },
@@ -57,6 +64,9 @@ export const pathwaySemanticColorTokens = {
   border: {
     DEFAULT: {
       value: { _light: "rgba(15, 23, 42, 0.12)", _dark: NETFUSION_REFERENCE.borderSubtle },
+    },
+    netfusion: {
+      value: NETFUSION_REFERENCE.borderSubtle,
     },
     subtle: {
       value: { _light: "rgba(15, 23, 42, 0.06)", _dark: "rgba(255, 255, 255, 0.04)" },
@@ -81,16 +91,6 @@ export const pathwaySemanticColorTokens = {
     focusRing: { value: "{colors.success.200}" },
   },
   brand: {
-    solid: { value: "{colors.brand.500}" },
-    contrast: { value: darkBg },
-    fg: { value: "{colors.brand.500}" },
-    muted: { value: "rgba(2, 193, 115, 0.15)" },
-    subtle: { value: "rgba(2, 193, 115, 0.25)" },
-    hover: { value: "{colors.brand.400}" },
-    focusRing: { value: NETFUSION_REFERENCE.shadowBrand },
-  },
-  /** @deprecated Prefer `brand.*` — kept for existing marketing components. */
-  marketing: {
     solid: { value: "{colors.brand.500}" },
     contrast: { value: darkBg },
     fg: { value: "{colors.brand.500}" },

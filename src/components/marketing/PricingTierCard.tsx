@@ -8,9 +8,9 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { MarketingButtonOutline, MarketingButtonSolid } from "./MarketingButton";
+import { BrandButtonOutline, BrandButtonSolid } from "../primitives/BrandButton";
 import type { ElementType, ReactNode } from "react";
-import { SectionHeader } from "./SectionHeader";
+import { SectionHeaderBlock } from "./SectionHeaderBlock";
 import { marketingSectionPy } from "./section-spacing";
 
 export type PricingTierCardProps = {
@@ -29,7 +29,7 @@ export type PricingTierCardProps = {
   checkIcon?: ElementType;
 };
 
-/** Netfusion `_price-card` */
+/** Netfusion `.price-card` */
 export function PricingTierCard({
   who,
   name,
@@ -47,38 +47,38 @@ export function PricingTierCard({
 }: PricingTierCardProps) {
   return (
     <Box
-      className={highlight ? undefined : "glass-panel"}
-      p="6"
-      rounded="card"
-      borderWidth={highlight ? "2px" : "1px"}
-      borderColor={highlight ? "marketing.solid" : "border.subtle"}
-      bg={highlight ? "bg.section" : undefined}
-      boxShadow={highlight ? "brand" : undefined}
+      className={highlight ? undefined : "netfusion-price-card"}
+      p={{ base: "6", md: "8" }}
+      rounded={highlight ? "sm" : "sm"}
+      borderWidth="1px"
+      borderColor="border.subtle"
+      bg={highlight ? "bg.card" : "bg.card"}
       position="relative"
+      h="full"
     >
       {badge ? (
-        <Text fontSize="xs" fontWeight="bold" color="marketing.fg" mb="4">
+        <Text fontSize="sm" fontWeight="600" color="brand.fg" mb="4">
           {badge}
         </Text>
       ) : null}
       {who ? (
-        <Text fontSize="xs" fontWeight="bold" mb="1" color="fg.muted">
+        <Text fontSize="xs" fontWeight="600" mb="1" color="fg.muted">
           {who}
         </Text>
       ) : null}
-      <Heading as="h4" fontSize="xl" fontWeight="900" mb="1" className="marketing-heading">
+      <Heading as="h4" fontSize="xl" fontWeight="700" mb="1" color="fg.heading">
         {name}
       </Heading>
-      <Text fontSize="3xl" fontWeight="900" mb={tagline ? "1" : "6"} color="fg.DEFAULT">
+      <Text fontSize="3xl" fontWeight="700" mb={tagline ? "1" : "6"} color="fg.heading">
         {price}
         {priceSuffix ? (
-          <Text as="span" fontSize="lg" fontWeight="normal">
+          <Text as="span" fontSize="lg" fontWeight="normal" color="fg.muted">
             {priceSuffix}
           </Text>
         ) : null}
       </Text>
       {tagline ? (
-        <Text fontSize="xs" color="fg.subtle" mb="6">
+        <Text fontSize="xs" color="fg.muted" mb="6">
           {tagline}
         </Text>
       ) : null}
@@ -90,10 +90,10 @@ export function PricingTierCard({
             fontSize="sm"
             align="flex-start"
             gap="2"
-            color="fg.muted"
+            color="fg.DEFAULT"
           >
             {CheckIcon ? (
-              <Icon as={CheckIcon} color="marketing.fg" mt="0.5" flexShrink={0} aria-hidden />
+              <Icon as={CheckIcon} color="brand.fg" mt="0.5" flexShrink={0} aria-hidden />
             ) : null}
             {feature}
           </Flex>
@@ -101,32 +101,32 @@ export function PricingTierCard({
       </Stack>
       {ctaHref ? (
         highlight ? (
-          <MarketingButtonSolid asChild w="full">
+          <BrandButtonSolid asChild w="full">
             <Link href={ctaHref}>{ctaLabel}</Link>
-          </MarketingButtonSolid>
+          </BrandButtonSolid>
         ) : (
-          <MarketingButtonOutline asChild w="full">
+          <BrandButtonOutline asChild w="full">
             <Link href={ctaHref}>{ctaLabel}</Link>
-          </MarketingButtonOutline>
+          </BrandButtonOutline>
         )
       ) : highlight ? (
-        <MarketingButtonSolid
+        <BrandButtonSolid
           w="full"
           onClick={onCtaClick}
           loading={ctaLoading}
           disabled={ctaLoading}
         >
           {ctaLabel}
-        </MarketingButtonSolid>
+        </BrandButtonSolid>
       ) : (
-        <MarketingButtonOutline
+        <BrandButtonOutline
           w="full"
           onClick={onCtaClick}
           loading={ctaLoading}
           disabled={ctaLoading}
         >
           {ctaLabel}
-        </MarketingButtonOutline>
+        </BrandButtonOutline>
       )}
     </Box>
   );
@@ -160,7 +160,7 @@ export function PricingGrid({
   return (
     <Box as="section" py={marketingSectionPy} px="4">
       <Box maxW="6xl" mx="auto">
-        <SectionHeader shortLabel={shortLabel} title={title} description={description} />
+        <SectionHeaderBlock shortLabel={shortLabel} title={title} description={description} align="center" />
         {headerExtra}
         <Grid templateColumns={templateColumns} gap="8">
           {tiers.map((tier) => (

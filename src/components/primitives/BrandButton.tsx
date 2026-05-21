@@ -1,24 +1,28 @@
 import { Button, type ButtonProps } from "@chakra-ui/react";
 import { NETFUSION_REFERENCE } from "../../tokens/netfusion-reference";
 
-const brandTransition = `all ${NETFUSION_REFERENCE.transitionDefault}`;
+const transition = NETFUSION_REFERENCE.transitionDefault;
 
-/** Netfusion `.blue-btn` — brand green CTA (public pages and branded product moments). */
+/** Netfusion `.te-theme-btn.blue-btn` */
 export function BrandButtonSolid(props: ButtonProps) {
   return (
     <Button
       bg="brand.solid"
       color="brand.contrast"
       rounded="control"
-      fontWeight="bold"
-      transition={brandTransition}
-      _hover={{ bg: "brand.hover" }}
+      fontWeight="600"
+      fontSize="sm"
+      px="10"
+      py="4"
+      h="auto"
+      transition={`all ${transition}`}
+      _hover={{ bg: "brand.solid", color: "brand.contrast" }}
       {...props}
     />
   );
 }
 
-/** Netfusion `.te-theme-btn` — outline brand CTA. */
+/** Netfusion `.te-theme-btn` outline */
 export function BrandButtonOutline(props: ButtonProps) {
   return (
     <Button
@@ -26,12 +30,16 @@ export function BrandButtonOutline(props: ButtonProps) {
       borderWidth="1px"
       borderColor="brand.solid"
       bg="transparent"
-      rounded="sm"
-      fontWeight="bold"
-      transition={brandTransition}
+      rounded="md"
+      fontWeight="600"
+      fontSize="sm"
+      px="8"
+      py="4"
+      h="auto"
+      transition={`all ${transition}`}
       _hover={{
         bg: "brand.solid",
-        color: "brand.contrast",
+        color: "#ffffff",
         borderColor: "brand.solid",
       }}
       {...props}

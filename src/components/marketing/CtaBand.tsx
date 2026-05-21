@@ -1,6 +1,6 @@
-import { Box, Container, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import type { ReactNode } from "react";
-import { marketingSectionPy } from "./section-spacing";
+import { MarketingSection } from "./MarketingSection";
 
 export type CtaBandProps = {
   title: string;
@@ -9,35 +9,37 @@ export type CtaBandProps = {
   footer?: ReactNode;
 };
 
-/** Netfusion NewsLetterV1 — full-width signup strip */
+/** Netfusion `.subscribe-area` — glass card on `#060606`, `flipInX`-style reveal. */
 export function CtaBand({ title, description, actions, footer }: CtaBandProps) {
   return (
-    <Box
-      as="section"
-      py={marketingSectionPy}
-      px="4"
-      bg="bg.section"
-      textAlign="center"
-      className="animate-fade-up"
-    >
-      <Container maxW="3xl">
+    <MarketingSection animate={false}>
+      <Box
+        className="glass-panel animate-fade-up"
+        rounded="panel"
+        py={{ base: "12", md: "16" }}
+        px={{ base: "6", md: "10" }}
+        textAlign="center"
+        style={{ animationDelay: "100ms" }}
+      >
         <Heading
-          as="h3"
-          className="marketing-heading"
-          fontSize={{ base: "3xl", md: "4xl" }}
-          fontWeight="900"
+          as="h2"
+          fontSize={{ base: "32px", md: "38px", lg: "sectionTitle" }}
+          lineHeight={{ base: "42px", md: "48px", lg: "55.65px" }}
+          letterSpacing={{ base: "-0.04em", lg: "-1.59px" }}
+          fontWeight="700"
+          color="fg.heading"
           mb="4"
         >
           {title}
         </Heading>
         {description ? (
-          <Text color="fg.muted" fontSize="lg" mb="8">
+          <Text color="fg.DEFAULT" fontSize="md" lineHeight="24px" mb="8" maxW="2xl" mx="auto">
             {description}
           </Text>
         ) : null}
         {actions}
         {footer ? <Box mt="6">{footer}</Box> : null}
-      </Container>
-    </Box>
+      </Box>
+    </MarketingSection>
   );
 }

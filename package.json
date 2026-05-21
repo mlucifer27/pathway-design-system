@@ -1,6 +1,6 @@
 {
   "name": "@pathway-sg/design-system",
-  "version": "0.1.1",
+  "version": "0.1.15",
   "description": "Pathway platform design system — Chakra theme, tokens, and shared UI (Netfusion-aligned brand layer)",
   "repository": {
     "type": "git",
@@ -17,22 +17,56 @@
     "registry": "https://registry.npmjs.org"
   },
   "files": [
+    "dist",
     "src",
     "README.md",
     "LICENSE"
   ],
   "exports": {
-    ".": "./src/index.ts",
-    "./primitives": "./src/components/primitives/index.ts",
-    "./primitives/*": "./src/components/primitives/*",
-    "./marketing": "./src/components/marketing/index.ts",
-    "./marketing/*": "./src/components/marketing/*",
-    "./foundations": "./src/foundations/index.ts",
-    "./theme/create-pathway-system": "./src/theme/create-pathway-system.ts",
-    "./theme/pathway-theme-config": "./src/theme/pathway-theme-config.ts",
-    "./tokens": "./src/tokens/index.ts",
-    "./providers": "./src/providers/index.ts",
-    "./providers/*": "./src/providers/*"
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.js"
+    },
+    "./primitives": {
+      "types": "./dist/components/primitives/index.d.mts",
+      "import": "./dist/components/primitives/index.js"
+    },
+    "./primitives/*": {
+      "types": "./dist/components/primitives/*.d.mts",
+      "import": "./dist/components/primitives/*.js"
+    },
+    "./marketing": {
+      "types": "./dist/components/marketing/index.d.mts",
+      "import": "./dist/components/marketing/index.js"
+    },
+    "./marketing/*": {
+      "types": "./dist/components/marketing/*.d.mts",
+      "import": "./dist/components/marketing/*.js"
+    },
+    "./foundations": {
+      "types": "./dist/foundations/index.d.mts",
+      "import": "./dist/foundations/index.js"
+    },
+    "./theme/create-pathway-system": {
+      "types": "./dist/theme/create-pathway-system.d.mts",
+      "import": "./dist/theme/create-pathway-system.js"
+    },
+    "./theme/pathway-theme-config": {
+      "types": "./dist/theme/pathway-theme-config.d.mts",
+      "import": "./dist/theme/pathway-theme-config.js"
+    },
+    "./tokens": {
+      "types": "./dist/tokens/index.d.mts",
+      "import": "./dist/tokens/index.js"
+    },
+    "./providers": {
+      "types": "./dist/providers/index.d.mts",
+      "import": "./dist/providers/index.js"
+    },
+    "./providers/*": {
+      "types": "./dist/providers/*.d.mts",
+      "import": "./dist/providers/*.js"
+    }
   },
   "peerDependencies": {
     "@chakra-ui/react": "^3.35.0",
@@ -54,7 +88,32 @@
     "node": ">=20"
   },
   "scripts": {
-    "prepublishOnly": "node scripts/validate-before-publish.mjs",
-    "pack:check": "npm pack --dry-run"
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src .storybook",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "validate": "npm run typecheck && npm run lint && npm run build && node scripts/validate-before-publish.mjs",
+    "prepublishOnly": "npm run validate",
+    "pack:check": "npm run build && npm pack --dry-run"
+  },
+  "devDependencies": {
+    "@chakra-ui/react": "^3.35.0",
+    "@emotion/react": "^11.14.0",
+    "@storybook/addon-essentials": "8.6.14",
+    "@storybook/addon-interactions": "8.6.14",
+    "@storybook/react-vite": "8.6.14",
+    "@storybook/test": "8.6.14",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-icons": "^5.6.0",
+    "storybook": "8.6.14",
+    "tsup": "^8.5.0",
+    "typescript": "^5",
+    "typescript-eslint": "^8",
+    "vite": "^6.3.5"
   }
 }

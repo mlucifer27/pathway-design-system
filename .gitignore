@@ -5,8 +5,9 @@ node_modules/
 *.tgz
 .npm/
 
-# Build output (when dist/ is added later)
+# Build output
 dist/
+storybook-static/
 build/
 *.tsbuildinfo
 

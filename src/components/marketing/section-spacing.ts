@@ -1,4 +1,4 @@
-/** Netfusion `.page-area` vertical rhythm */
+/** Netfusion `.page-area` / `.banner-area.style-1` vertical rhythm */
 export const marketingSectionPy = {
   base: "sectionYMobile",
   md: "sectionYTablet",
@@ -9,4 +9,10 @@ export const marketingHeroPt = {
   base: "24",
   md: "32",
   lg: "heroPt",
+} as const;
+
+export const marketingHeroPb = {
+  base: "16",
+  md: "20",
+  lg: "heroPb",
 } as const;

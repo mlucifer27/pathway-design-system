@@ -22,7 +22,7 @@ export function PageBreadcrumb({ items }: PageBreadcrumbProps) {
               {index > 0 ? <Text aria-hidden>/</Text> : null}
               {item.href && !isLast ? (
                 <Link href={item.href}>
-                  <Text _hover={{ color: "marketing.fg" }}>{item.label}</Text>
+                  <Text _hover={{ color: "brand.fg" }}>{item.label}</Text>
                 </Link>
               ) : (
                 <Text color={isLast ? "fg.DEFAULT" : undefined} fontWeight={isLast ? "semibold" : undefined}>

@@ -36,13 +36,16 @@ The package is **MIT** licensed. `LICENSE` is included in the npm tarball (copyr
 From the repo root:
 
 ```bash
-npm run pack:check
-node scripts/validate-before-publish.mjs
+npm run validate   # typecheck, lint, build dist/, pack dry-run
+# or: npm run pack:check
 ```
+
+`validate` runs `tsup` (`bundle: false`) so `dist/` mirrors `src/` in the published tarball. Runtime and `types` both resolve to `dist/`.
 
 Confirm:
 
-- [ ] Version in `package.json` is the one you intend to ship (`0.1.0` for first release).
+- [ ] Version in `package.json` is the one you intend to ship (current: `0.1.15`).
+- [ ] `npm run validate` passes (typecheck + lint + tarball check).
 - [ ] **Publish before** consumer apps can install (package must exist on npm).
 - [ ] Both apps use **registry semver only** (never `file:` paths):
 

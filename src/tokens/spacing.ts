@@ -6,5 +6,6 @@ export const pathwaySpacingTokens = {
   sectionYTablet: { value: "6.25rem" },
   sectionYMobile: { value: "4.375rem" },
   heroPt: { value: NETFUSION_REFERENCE.heroPaddingTop },
-  sectionTitleMb: { value: "3.75rem" },
+  heroPb: { value: NETFUSION_REFERENCE.heroPaddingBottom },
+  sectionTitleMb: { value: NETFUSION_REFERENCE.sectionTitleMarginBottom },
 } as const;

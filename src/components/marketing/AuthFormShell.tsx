@@ -6,11 +6,19 @@ export type AuthFormShellProps = {
   maxW?: BoxProps["maxW"];
 };
 
-/** Centered glass card for `(auth)` routes — matches platform auth layout. */
+/** Vertically centered auth card — Netfusion contact/login panel density. */
 export function AuthFormShell({ children, maxW = "md" }: AuthFormShellProps) {
   return (
-    <Flex align="center" justify="center" px="4" py="12">
-      <Box w="full" maxW={maxW} className="glass-panel" p={{ base: "6", md: "8" }}>
+    <Flex
+      w="full"
+      flex="1"
+      align="center"
+      justify="center"
+      px="4"
+      py={{ base: "8", md: "12" }}
+      minH="0"
+    >
+      <Box w="full" maxW={maxW} className="auth-panel" p={{ base: "7", md: "10" }}>
         {children}
       </Box>
     </Flex>

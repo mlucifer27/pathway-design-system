@@ -1,6 +1,7 @@
 import { Box, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import type { ReactNode } from "react";
-import { marketingHeroPt } from "./section-spacing";
+import { MarketingShortLabel } from "./MarketingShortLabel";
+import { marketingHeroPb, marketingHeroPt } from "./section-spacing";
 
 export type MarketingHeroProps = {
   badge?: string;
@@ -10,7 +11,7 @@ export type MarketingHeroProps = {
   align?: "center" | "left";
 };
 
-/** Netfusion banner / SliderV1 headline block */
+/** Netfusion `.banner-area.style-1` + centered `.te-section-title` */
 export function MarketingHero({
   badge,
   title,
@@ -21,52 +22,41 @@ export function MarketingHero({
   const isCenter = align === "center";
 
   return (
-    <Box
-      as="section"
-      pt={marketingHeroPt}
-      pb={{ base: "16", md: "20" }}
-      px="4"
-      className="animate-fade-up"
-    >
-      <Container maxW="4xl" textAlign={isCenter ? "center" : "left"}>
-        {badge ? (
-          <Text
-            as="span"
-            display="inline-block"
-            fontSize="shortLabel"
-            fontWeight="bold"
-            color="marketing.fg"
-            borderWidth="1px"
-            borderColor="marketing.solid"
-            px="4"
-            py="2"
-            rounded="sm"
-            mb="6"
-            textTransform="uppercase"
-            letterSpacing="wider"
-          >
-            {badge}
-          </Text>
-        ) : null}
-        <Heading
-          as="h1"
-          className="marketing-heading"
-          fontSize={{ base: "4xl", md: "6xl", lg: "hero" }}
-          fontWeight="900"
-          lineHeight="1.1"
-          letterSpacing="-0.04em"
-          mb="6"
+    <Box as="section" position="relative" pt={marketingHeroPt} pb={marketingHeroPb} px="4">
+      <Container maxW="6xl" textAlign={isCenter ? "center" : "left"}>
+        <Box
+          className="animate-slide-in-down"
+          display="flex"
+          flexDirection="column"
+          alignItems={isCenter ? "center" : "flex-start"}
         >
-          {title}
-        </Heading>
-        <Text fontSize="xl" color="fg.muted" mb="10" maxW="2xl" mx={isCenter ? "auto" : undefined}>
-          {subtitle}
-        </Text>
-        {actions ? (
-          <Flex justify={isCenter ? "center" : "flex-start"} gap="4" wrap="wrap">
-            {actions}
-          </Flex>
-        ) : null}
+          {badge ? <MarketingShortLabel>{badge}</MarketingShortLabel> : null}
+          <Heading
+            as="h1"
+            color="fg.heading"
+            mb="6"
+            fontSize={{ base: "40px", md: "52px", lg: "hero" }}
+            lineHeight={{ base: "1.15", lg: "1.09" }}
+            letterSpacing={{ base: "-0.04em", lg: "-1.59px" }}
+          >
+            {title}
+          </Heading>
+          <Text
+            fontSize="md"
+            color="fg.DEFAULT"
+            mb="10"
+            maxW="2xl"
+            mx={isCenter ? "auto" : undefined}
+            lineHeight="24px"
+          >
+            {subtitle}
+          </Text>
+          {actions ? (
+            <Flex justify={isCenter ? "center" : "flex-start"} gap="4" wrap="wrap">
+              {actions}
+            </Flex>
+          ) : null}
+        </Box>
       </Container>
     </Box>
   );

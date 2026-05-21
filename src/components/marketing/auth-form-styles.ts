@@ -1,10 +1,5 @@
 import type { ButtonProps, InputProps } from "@chakra-ui/react";
 
-export const authCardProps = {
-  rounded: "2xl",
-  p: { base: "0", md: "2" },
-} as const;
-
 /** Inputs on public auth cards — brand focus ring matches Netfusion CTAs. */
 export const authInputProps: InputProps = {
   px: "4",

@@ -9,7 +9,7 @@ Pathway platform design system: Chakra v3 theme, design tokens, foundations, pri
 ## Install
 
 ```bash
-npm install @pathway-sg/design-system@0.1.0
+npm install @pathway-sg/design-system@0.1.15
 ```
 
 ## Imports
@@ -33,5 +33,13 @@ Sibling folders in the editor are **separate projects**. Apps must depend on thi
 MIT — see [LICENSE](./LICENSE).
 
 Repo: [mlucifer27/pathway-design-system](https://github.com/mlucifer27/pathway-design-system). Pushes to `main` publish to npm via GitHub Actions (see `PUBLISHING.md`).
+
+## Develop
+
+```bash
+npm run validate      # typecheck, lint, build dist, pack check
+npm run storybook     # primitive catalog on :6006
+npm run build-storybook
+```
 
 See `ARCHITECTURE.md` and `PUBLISHING.md`.

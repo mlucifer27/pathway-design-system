@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Box, Container, Flex, HStack, Heading, Text } from "@chakra-ui/react";
-import { MarketingButtonOutline, MarketingButtonSolid } from "./MarketingButton";
+import { BrandButtonOutline, BrandButtonSolid } from "../primitives/BrandButton";
 
 export type PublicSiteHeaderCta = {
   label: string;
@@ -22,7 +22,7 @@ function ctaLinkProps(external?: boolean) {
   return external ? { target: "_blank" as const, rel: "noopener noreferrer" } : {};
 }
 
-/** Netfusion HeaderV1 — sticky glass bar */
+/** Netfusion header — glass bar, `.te-theme-btn` CTAs */
 export function PublicSiteHeader({
   brandTitle,
   brandTagline,
@@ -35,26 +35,20 @@ export function PublicSiteHeader({
   return (
     <Box
       as="header"
-      bg="bg.glass"
-      backdropFilter="blur(16px)"
-      borderBottomWidth="1px"
-      borderColor="border.DEFAULT"
+      className="glass-panel"
+      borderRadius="0"
+      borderTopWidth="0"
+      borderLeftWidth="0"
+      borderRightWidth="0"
       position="sticky"
       top="0"
       zIndex="50"
     >
       <Container maxW="6xl" py="4" px="4">
-        <Flex align="center" justify="space-between">
+        <Flex align="center" justify="space-between" gap="4">
           <Link href={homeHref}>
             <Box>
-              <Heading
-                as="p"
-                className="marketing-heading"
-                fontSize="2xl"
-                fontWeight="900"
-                color="fg.DEFAULT"
-                letterSpacing="tight"
-              >
+              <Heading as="p" fontSize="2xl" fontWeight="700" color="fg.heading" letterSpacing="tight">
                 {brandTitle}
               </Heading>
               <Text fontSize="xs" color="fg.muted" mt="-1">
@@ -64,18 +58,18 @@ export function PublicSiteHeader({
           </Link>
           <HStack gap="3">
             {authenticated && authenticatedCta ? (
-              <MarketingButtonSolid asChild size="sm">
+              <BrandButtonSolid asChild size="sm">
                 <Link
                   href={authenticatedCta.href}
                   {...ctaLinkProps(authenticatedCta.external)}
                 >
                   {authenticatedCta.label}
                 </Link>
-              </MarketingButtonSolid>
+              </BrandButtonSolid>
             ) : (
               <>
                 {secondaryCta ? (
-                  <MarketingButtonOutline asChild size="sm">
+                  <BrandButtonOutline asChild size="sm">
                     <Link
                       href={secondaryCta.href}
                       data-theme="button"
@@ -83,17 +77,17 @@ export function PublicSiteHeader({
                     >
                       {secondaryCta.label}
                     </Link>
-                  </MarketingButtonOutline>
+                  </BrandButtonOutline>
                 ) : null}
                 {primaryCta ? (
-                  <MarketingButtonSolid asChild size="sm">
+                  <BrandButtonSolid asChild size="sm">
                     <Link
                       href={primaryCta.href}
                       {...ctaLinkProps(primaryCta.external)}
                     >
                       {primaryCta.label}
                     </Link>
-                  </MarketingButtonSolid>
+                  </BrandButtonSolid>
                 ) : null}
               </>
             )}

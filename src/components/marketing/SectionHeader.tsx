@@ -1,4 +1,5 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { MarketingShortLabel } from "./MarketingShortLabel";
 
 export type SectionHeaderProps = {
   shortLabel?: string;
@@ -6,6 +7,12 @@ export type SectionHeaderProps = {
   description?: string;
   align?: "center" | "left";
 };
+
+const sectionTitleStyles = {
+  fontSize: { base: "32px", md: "38px", lg: "sectionTitle" },
+  lineHeight: { base: "42px", md: "48px", lg: "55.65px" },
+  letterSpacing: { base: "-0.04em", lg: "-1.59px" },
+} as const;
 
 /** Netfusion `.te-section-title` */
 export function SectionHeader({
@@ -16,54 +23,60 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   const isCenter = align === "center";
 
-  return (
-    <Flex
-      direction={{ base: "column", lg: description ? "row" : "column" }}
-      align={isCenter ? "center" : "flex-start"}
-      justify="space-between"
-      gap="6"
-      mb="sectionTitleMb"
+  const titleBlock = (
+    <Box
+      display="flex"
+      flexDirection="column"
+      gap="4"
+      w={isCenter ? "full" : undefined}
+      alignItems={isCenter ? "center" : "flex-start"}
       textAlign={isCenter ? "center" : "left"}
-      className="animate-fade-up"
     >
-      <Box maxW={description ? "2xl" : "4xl"}>
-        {shortLabel ? (
-          <Text
-            as="span"
-            display="inline-block"
-            fontSize="shortLabel"
-            fontWeight="bold"
-            color="marketing.fg"
-            borderWidth="1px"
-            borderColor="marketing.solid"
-            px="3"
-            py="1"
-            rounded="sm"
-            mb="4"
-            textTransform="uppercase"
-            letterSpacing="wider"
-          >
-            {shortLabel}
+      {shortLabel ? <MarketingShortLabel>{shortLabel}</MarketingShortLabel> : null}
+      <Heading as="h2" color="fg.heading" mb="0" {...sectionTitleStyles}>
+        {title}
+      </Heading>
+    </Box>
+  );
+
+  if (isCenter) {
+    return (
+      <Flex
+        direction="column"
+        align="center"
+        textAlign="center"
+        gap="6"
+        w="full"
+        maxW="4xl"
+        mx="auto"
+      >
+        {titleBlock}
+        {description ? (
+          <Text color="fg.DEFAULT" fontSize="md" maxW="md" lineHeight="24px">
+            {description}
           </Text>
         ) : null}
-        <Heading
-          as="h2"
-          className="marketing-heading"
-          fontSize={{ base: "3xl", md: "sectionTitle" }}
-          fontWeight="900"
-          lineHeight="1.15"
-          letterSpacing="-0.04em"
-        >
-          {title}
-        </Heading>
+      </Flex>
+    );
+  }
+
+  return (
+    <Flex
+      direction={{ base: "column", lg: "row" }}
+      justify="space-between"
+      align={{ base: "stretch", lg: "flex-end" }}
+      gap="6"
+    >
+      <Box flex="1" maxW={{ lg: "50%" }}>
+        {titleBlock}
       </Box>
       {description ? (
         <Text
-          color="fg.muted"
-          fontSize="lg"
-          maxW="md"
-          lineHeight="relaxed"
-          alignSelf={isCenter ? "center" : "flex-end"}
+          color="fg.DEFAULT"
+          fontSize="md"
+          lineHeight="24px"
+          maxW={{ lg: "50%" }}
+          alignSelf={{ lg: "flex-end" }}
         >
           {description}
         </Text>

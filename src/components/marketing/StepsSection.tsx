@@ -1,6 +1,7 @@
 import { Box, Flex, Grid, Heading, Text } from "@chakra-ui/react";
-import { SectionHeader } from "./SectionHeader";
-import { marketingSectionPy } from "./section-spacing";
+import { netfusionMotionDelay } from "./netfusion-motion";
+import { MarketingSection } from "./MarketingSection";
+import { SectionHeaderBlock } from "./SectionHeaderBlock";
 
 export type ProcessStep = {
   step: number | string;
@@ -16,7 +17,7 @@ export type StepsSectionProps = {
   columns?: { base?: number; md?: number };
 };
 
-/** Netfusion ProcessV1 / ProcessV2 */
+/** Netfusion `.process-step-area` cards */
 export function StepsSection({
   shortLabel,
   title,
@@ -30,36 +31,46 @@ export function StepsSection({
   };
 
   return (
-    <Box as="section" py={marketingSectionPy} px="4" bg="bg.section">
-      <Box maxW="6xl" mx="auto">
-        <SectionHeader shortLabel={shortLabel} title={title} description={description} />
-        <Grid templateColumns={templateColumns} gap="8">
-          {steps.map((item) => (
-            <Box key={String(item.step) + item.title} className="glass-panel" p="6" rounded="card">
-              <Flex
-                align="center"
-                justify="center"
-                boxSize="12"
-                rounded="full"
-                borderWidth="1px"
-                borderColor="marketing.solid"
-                color="marketing.fg"
-                fontWeight="900"
-                fontSize="lg"
-                mb="4"
-              >
-                {item.step}
-              </Flex>
-              <Heading as="h4" fontSize="lg" fontWeight="900" mb="2" className="marketing-heading">
-                {item.title}
-              </Heading>
-              <Text color="fg.muted" fontSize="sm" lineHeight="relaxed">
-                {item.description}
-              </Text>
-            </Box>
-          ))}
-        </Grid>
-      </Box>
-    </Box>
+    <MarketingSection animate={false}>
+      <SectionHeaderBlock
+        shortLabel={shortLabel}
+        title={title}
+        description={description}
+        align="center"
+      />
+      <Grid templateColumns={templateColumns} gap="8">
+        {steps.map((item, index) => (
+          <Box
+            key={String(item.step) + item.title}
+            className="glass-panel animate-fade-up"
+            rounded="panel"
+            p="6"
+            h="full"
+            style={{ animationDelay: netfusionMotionDelay(index) }}
+          >
+            <Flex
+              align="center"
+              justify="center"
+              boxSize="12"
+              rounded="full"
+              borderWidth="1px"
+              borderColor="brand.solid"
+              color="brand.fg"
+              fontWeight="700"
+              fontSize="lg"
+              mb="4"
+            >
+              {item.step}
+            </Flex>
+            <Heading as="h4" fontSize="24px" fontWeight="500" lineHeight="31px" color="fg.DEFAULT" mb="2">
+              {item.title}
+            </Heading>
+            <Text color="fg.DEFAULT" fontSize="md" lineHeight="24px">
+              {item.description}
+            </Text>
+          </Box>
+        ))}
+      </Grid>
+    </MarketingSection>
   );
 }

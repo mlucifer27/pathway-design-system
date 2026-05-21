@@ -18,7 +18,6 @@ Platform-wide design consistency for Pathway Sports Group apps (marketing sites 
 
 - **`brand.*`** — Netfusion green (`#02C173`), dark canvas, glass surfaces. Use on public pages and branded moments.
 - **`primary.*`** — Navy palette for authenticated dashboards and internal tools.
-- **`marketing.*`** — Alias of `brand.*` for existing public-page components; prefer `brand.*` in new code.
 
 ## Netfusion alignment
 
@@ -32,13 +31,45 @@ Motion (`MovefadeUp`), glass panels, and link hovers live in `src/theme/global-s
 |-----------|----------|
 | `GlassPanel` | Card/sheet on `bg.glass` (dashboards, modals) |
 | `glassPanelButtonProps` | Button on a glass surface (avoids opaque solid fill) |
+| `glassPanelFieldProps` | Input, textarea, native select on glass |
+| `glassPanelBadgeProps` | Small glass chips |
+| `glassPanelTableHeaderProps` | Table header row on glass tables |
+| `StatCard` | Dashboard stat tile (label + value + optional icon) |
+| `EmptyStatePanel` | Centered empty list / table state |
+| `ProductSectionHeader` | Dashboard section title (`h2` / `h3`, optional action) |
+| `DataTableShell` | Scrollable outline table with optional toolbar |
 | `ProductButtonSolid` / `Outline` | Navy CTAs in `(internal)` routes |
 | `BrandButtonSolid` / `Outline` | Green CTAs (public routes; same as legacy `MarketingButton*`) |
 | `UserAvatar` | Profile menu, lists, headers |
 | `StickyGlassHeader` | Sticky dashboard top bar |
 | `DashboardPageContainer` | `maxW="2xl"` main column + bottom-nav padding |
+| `COLLEGE_COACH_CONTAINER_MAX_W` | `5xl` — college coach dashboard header/content width |
 
 Migration checklist: `plans/2026-05-20--design-system-primitives-migration.md`.
+
+## Storybook
+
+From `pathway-design-system/`:
+
+```bash
+npm run storybook        # http://localhost:6006
+npm run build-storybook  # static catalog in storybook-static/
+```
+
+Stories live next to components (`src/**/*.stories.tsx`). Preview uses `createPathwaySystem()` and dark canvas background.
+
+## Build (`dist/`)
+
+`npm run build` (tsup, `bundle: false`) transpiles every `src/**/*.ts(x)` file to ESM under `dist/` (mirrors `src/` layout). Dependencies stay external — no monolithic marketing bundle — so Next.js SSR works with runtime `dist` entries.
+
+Published tarball includes **`dist`** and **`src`** (reference / deep imports).
+
+| `exports` field | Resolves to |
+|-----------------|-------------|
+| `types` | `dist/**/*.d.mts` |
+| `import` | `dist/**/*.js` |
+
+Next.js apps may keep `transpilePackages: ["@pathway-sg/design-system"]` for Chakra in app boundaries; it is optional when consuming compiled JS.
 
 ## Adding UI
 

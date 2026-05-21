@@ -7,4 +7,5 @@ export const pathwayRadiiTokens = {
   control: { value: "9999px" },
   panel: { value: "20px" },
   card: { value: "12px" },
+  price: { value: "5px" },
 } as const;

@@ -1,57 +1,29 @@
 "use client";
 
 import { Box } from "@chakra-ui/react";
+import { NETFUSION_REFERENCE } from "../../tokens/netfusion-reference";
 
 export type MarketingBackgroundOrbsProps = {
   variant?: "global" | "auth";
   resolvedTheme: "light" | "dark";
 };
 
-/** Netfusion `.circle-drop-shadow` — brand green blobs, 244px blur */
+const ORB_BLUR_PX = `${NETFUSION_REFERENCE.orbBlurPx}px`;
+
+/** Netfusion `.blur-shape` / `.circle-drop-shadow` — green glow on dark and light canvases. */
 export function MarketingBackgroundOrbs({
   variant = "global",
   resolvedTheme,
 }: MarketingBackgroundOrbsProps) {
   const isLight = resolvedTheme === "light";
-  const opacityScale = isLight ? 0.35 : 1;
-  const brandGlow = "brand.500";
-
-  if (variant === "auth") {
-    return (
-      <>
-        <Box
-          position="absolute"
-          top="-10%"
-          left="-10%"
-          w="40%"
-          h="40%"
-          bg={brandGlow}
-          filter="blur(244px)"
-          opacity={0.2 * opacityScale}
-          borderRadius="full"
-          zIndex={0}
-          pointerEvents="none"
-        />
-        <Box
-          position="absolute"
-          bottom="-10%"
-          right="-10%"
-          w="50%"
-          h="50%"
-          bg={brandGlow}
-          filter="blur(244px)"
-          opacity={0.15 * opacityScale}
-          borderRadius="full"
-          zIndex={0}
-          pointerEvents="none"
-        />
-      </>
-    );
-  }
+  const primaryOpacity = isLight
+    ? NETFUSION_REFERENCE.orbOpacityLight
+    : NETFUSION_REFERENCE.orbOpacity;
+  const secondaryOpacity = isLight ? NETFUSION_REFERENCE.orbOpacityLightSecondary : 0.2;
 
   return (
     <Box
-      position="fixed"
+      position={variant === "auth" ? "absolute" : "fixed"}
       inset="0"
       overflow="hidden"
       pointerEvents="none"
@@ -59,36 +31,29 @@ export function MarketingBackgroundOrbs({
       aria-hidden="true"
     >
       <Box
+        className="blur-shape"
         position="absolute"
-        top="-5%"
-        left="-5%"
-        w="30%"
-        h="30%"
-        bg={brandGlow}
-        filter="blur(244px)"
-        opacity={0.2 * opacityScale}
+        top={isLight ? "12%" : "20%"}
+        left={isLight ? "8%" : "15%"}
+        w="613px"
+        h="613px"
+        maxW="90vw"
+        maxH="70vh"
+        bg="brand.500"
+        opacity={primaryOpacity}
+        filter={`blur(${ORB_BLUR_PX})`}
         borderRadius="full"
       />
       <Box
         position="absolute"
-        top="10%"
-        right="-5%"
-        w="25%"
-        h="25%"
-        bg={brandGlow}
-        filter="blur(244px)"
-        opacity={0.12 * opacityScale}
-        borderRadius="full"
-      />
-      <Box
-        position="absolute"
-        bottom="-10%"
-        right="10%"
-        w="40%"
-        h="40%"
-        bg={brandGlow}
-        filter="blur(244px)"
-        opacity={0.18 * opacityScale}
+        bottom={isLight ? "0" : "10%"}
+        right={isLight ? "-5%" : "10%"}
+        w={isLight ? "520px" : "400px"}
+        h={isLight ? "520px" : "400px"}
+        maxW="85vw"
+        bg={isLight ? "brand.300" : "brand.500"}
+        opacity={secondaryOpacity}
+        filter="blur(200px)"
         borderRadius="full"
       />
     </Box>
