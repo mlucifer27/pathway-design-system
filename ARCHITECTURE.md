@@ -8,7 +8,8 @@ Platform-wide design consistency for Pathway Sports Group apps (marketing sites 
 |-------|------|------|
 | Reference | `src/tokens/netfusion-reference.ts` | Documented Netfusion Sass values for audits |
 | Tokens | `src/tokens/*` | Colors, type, spacing, radii, shadows, semantics, recipes, breakpoints |
-| Foundations | `src/foundations/*` | Cross-app constants (theme storage key, layout widths) |
+| Foundations | `src/foundations/*` | Cross-app constants (theme storage key, layout widths, theme init script) |
+| Providers | `src/providers/*` | `ColorModeProvider`, `PathwayThemeSwitcher` (optional `react-icons` peer) |
 | Theme | `src/theme/*` | Chakra `defineConfig` + `createPathwaySystem()` + global CSS |
 | Primitives | `src/components/primitives/*` | Product UI building blocks (glass, buttons, avatar, shells) |
 | Marketing | `src/components/marketing/*` | Public-site sections (Netfusion-aligned compositions) |
@@ -51,7 +52,9 @@ Migration checklist: `plans/2026-05-20--design-system-primitives-migration.md`.
 import { createPathwaySystem } from "@pathway-sg/design-system/theme/create-pathway-system";
 import { GlassPanel, ProductButtonSolid } from "@pathway-sg/design-system/primitives";
 import { SectionHeader } from "@pathway-sg/design-system/marketing";
-import { PATHWAY_THEME_STORAGE_KEY } from "@pathway-sg/design-system/foundations";
+import { PATHWAY_THEME_STORAGE_KEY, PathwayThemeInitScript } from "@pathway-sg/design-system/foundations";
+import { authInputProps, AuthFormShell } from "@pathway-sg/design-system/marketing";
+import { ColorModeProvider, PathwayThemeSwitcher } from "@pathway-sg/design-system/providers";
 ```
 
 Publish semver bumps via `PUBLISHING.md`; each consumer app runs `npm install` in its own directory and pins `@pathway-sg/design-system` from the **npm registry** (never `file:` paths — see `CONSUMERS.md`).

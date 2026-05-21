@@ -45,6 +45,8 @@ const requiredPaths = [
   "src/theme/create-pathway-system.ts",
   "src/components/marketing/index.ts",
   "src/components/primitives/index.ts",
+  "src/providers/index.ts",
+  "src/foundations/theme-init-script.tsx",
 ];
 
 const missingFiles = requiredPaths.filter((p) => !files.some((f) => f === p || f.endsWith(`/${p}`)));

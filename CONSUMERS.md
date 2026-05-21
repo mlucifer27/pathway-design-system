@@ -5,7 +5,7 @@
 Apps **must** depend on the **npm registry** only:
 
 ```json
-"@pathway-sg/design-system": "0.1.0"
+"@pathway-sg/design-system": "0.1.1"
 ```
 
 Install inside each app project:

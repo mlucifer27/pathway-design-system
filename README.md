@@ -21,7 +21,8 @@ npm install @pathway-sg/design-system@0.1.0
 | `@pathway-sg/design-system/tokens` | Color/spacing modules + `NETFUSION_REFERENCE` |
 | `@pathway-sg/design-system/foundations` | `PATHWAY_THEME_STORAGE_KEY`, layout constants |
 | `@pathway-sg/design-system/primitives` | Product UI components |
-| `@pathway-sg/design-system/marketing` | Public-site sections |
+| `@pathway-sg/design-system/marketing` | Public-site sections + auth form styles |
+| `@pathway-sg/design-system/providers` | `ColorModeProvider`, `PathwayThemeSwitcher` |
 
 ## Local layout
 

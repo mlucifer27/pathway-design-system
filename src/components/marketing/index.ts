@@ -22,3 +22,12 @@ export { PageBreadcrumb } from "./PageBreadcrumb";
 export type { PageBreadcrumbProps, BreadcrumbItem } from "./PageBreadcrumb";
 export { marketingSectionPy, marketingHeroPt } from "./section-spacing";
 export { MarketingButtonSolid, MarketingButtonOutline } from "./MarketingButton";
+export { AuthFormShell } from "./AuthFormShell";
+export type { AuthFormShellProps } from "./AuthFormShell";
+export {
+  authCardProps,
+  authInputProps,
+  authGoogleButtonProps,
+  authSubmitButtonProps,
+  authLinkProps,
+} from "./auth-form-styles";
