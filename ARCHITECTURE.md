@@ -1,4 +1,4 @@
-# @pathway/design-system architecture
+# @pathway-sg/design-system architecture
 
 Platform-wide design consistency for Pathway Sports Group apps (marketing sites today; dashboards and API-backed UIs next).
 
@@ -48,10 +48,10 @@ Migration checklist: `plans/2026-05-20--design-system-primitives-migration.md`.
 ## Consumption
 
 ```ts
-import { createPathwaySystem } from "@pathway/design-system/theme/create-pathway-system";
-import { GlassPanel, ProductButtonSolid } from "@pathway/design-system/primitives";
-import { SectionHeader } from "@pathway/design-system/marketing";
-import { PATHWAY_THEME_STORAGE_KEY } from "@pathway/design-system/foundations";
+import { createPathwaySystem } from "@pathway-sg/design-system/theme/create-pathway-system";
+import { GlassPanel, ProductButtonSolid } from "@pathway-sg/design-system/primitives";
+import { SectionHeader } from "@pathway-sg/design-system/marketing";
+import { PATHWAY_THEME_STORAGE_KEY } from "@pathway-sg/design-system/foundations";
 ```
 
-Publish semver bumps via `PUBLISHING.md`; each consumer app runs `npm install` in its own directory and pins `@pathway/design-system` from the **npm registry** (never `file:` paths — see `CONSUMERS.md`).
+Publish semver bumps via `PUBLISHING.md`; each consumer app runs `npm install` in its own directory and pins `@pathway-sg/design-system` from the **npm registry** (never `file:` paths — see `CONSUMERS.md`).

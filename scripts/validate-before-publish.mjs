@@ -17,8 +17,8 @@ if (missing.length > 0) {
   process.exit(1);
 }
 
-if (!pkg.name.startsWith("@pathway/")) {
-  console.error(`Expected scoped name @pathway/*, got ${pkg.name}`);
+if (!pkg.name.startsWith("@pathway-sg/")) {
+  console.error(`Expected scoped name @pathway-sg/*, got ${pkg.name}`);
   process.exit(1);
 }
 
@@ -53,4 +53,4 @@ if (missingFiles.length > 0) {
   process.exit(1);
 }
 
-console.log(`OK: @pathway/design-system@${pkg.version} — ${files.length} files, ~${entry?.size ?? "?"} bytes`);
+console.log(`OK: ${pkg.name}@${pkg.version} — ${files.length} files, ~${entry?.size ?? "?"} bytes`);

@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: "20"
           registry-url: "https://registry.npmjs.org"
-          scope: "@pathway"
+          scope: "@pathway-sg"
           always-auth: true
 
       - name: Validate package
@@ -43,12 +43,12 @@ jobs:
         run: |
           VERSION=$(node -p "require('./package.json').version")
           echo "package_version=${VERSION}" >> "$GITHUB_OUTPUT"
-          if npm view "@pathway/design-system@${VERSION}" version 2>/dev/null | grep -Fxq "${VERSION}"; then
+          if npm view "@pathway-sg/design-system@${VERSION}" version 2>/dev/null | grep -Fxq "${VERSION}"; then
             echo "should_publish=false" >> "$GITHUB_OUTPUT"
-            echo "Skipping: @pathway/design-system@${VERSION} is already on npm. Bump version in package.json to release again."
+            echo "Skipping: @pathway-sg/design-system@${VERSION} is already on npm. Bump version in package.json to release again."
           else
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
-            echo "Will publish @pathway/design-system@${VERSION}"
+            echo "Will publish @pathway-sg/design-system@${VERSION}"
           fi
 
       - name: Publish to npm

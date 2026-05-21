@@ -1,21 +1,21 @@
-# Publishing `@pathway/design-system` to npm
+# Publishing `@pathway-sg/design-system` to npm
 
-This package is **ready to publish** as TypeScript source. Consumers must use **Next.js 14+** with `transpilePackages: ["@pathway/design-system"]` (already set in both apps).
+This package is **ready to publish** as TypeScript source. Consumers must use **Next.js 14+** with `transpilePackages: ["@pathway-sg/design-system"]` (already set in both apps).
 
 ## Prerequisites (one-time)
 
-### 1. npm account and `@pathway` scope
+### 1. npm account and `@pathway-sg` scope
+
+This package publishes as **`@pathway-sg/design-system`** (npm org **pathway-sg**).
 
 1. Create an account at [npmjs.com](https://www.npmjs.com/signup).
-2. Create an npm **organization** named `pathway`, **or** use your user scope and rename the package (e.g. `@youruser/design-system`).
+2. Use the **pathway-sg** organization you created on npm.
 3. Confirm you can publish to the scope:
 
 ```bash
 npm whoami
-npm org ls pathway   # if using an org
+npm org ls pathway-sg
 ```
-
-If `@pathway` is taken by someone else, pick another scope and update `name` in `package.json` before publishing.
 
 ### 2. License
 
@@ -47,7 +47,7 @@ Confirm:
 - [ ] Both apps use **registry semver only** (never `file:` paths):
 
 ```json
-"@pathway/design-system": "0.1.0"
+"@pathway-sg/design-system": "0.1.0"
 ```
 
 See `CONSUMERS.md` — filesystem references are not allowed.
@@ -56,7 +56,7 @@ See `CONSUMERS.md` — filesystem references are not allowed.
 - [ ] `next.config.ts` in each app includes:
 
 ```ts
-transpilePackages: ["@pathway/design-system"],
+transpilePackages: ["@pathway-sg/design-system"],
 ```
 
 - [ ] Apps install peers: `@chakra-ui/react`, `@emotion/react`, `next`, `react`, `react-dom`.
@@ -75,8 +75,8 @@ Scoped public packages **must** use `--access public` (also set in `publishConfi
 Verify on npm:
 
 ```bash
-npm view @pathway/design-system version
-npm view @pathway/design-system exports
+npm view @pathway-sg/design-system version
+npm view @pathway-sg/design-system exports
 ```
 
 ---
@@ -94,7 +94,7 @@ Each app is its own project. Run `npm install` **inside** `athleteiq/` or `pathw
 In each app or repo root `.npmrc` (do **not** commit tokens):
 
 ```
-@pathway:registry=https://registry.npmjs.org
+@pathway-sg:registry=https://registry.npmjs.org
 //registry.npmjs.org/:_authToken=${NPM_TOKEN}
 ```
 
@@ -103,7 +103,7 @@ The **Publish to npm** workflow in this repo sets `registry-url` and uses `NPM_T
 ### Install in an app
 
 ```bash
-npm install @pathway/design-system@0.1.0
+npm install @pathway-sg/design-system@0.1.0
 ```
 
 Peer dependencies must be installed in the app (see `package.json` `peerDependencies`).
@@ -123,7 +123,7 @@ npm publish --access public
 4. Bump both apps:
 
 ```json
-"@pathway/design-system": "0.1.1"
+"@pathway-sg/design-system": "0.1.1"
 ```
 
 5. In each app: `npm install`
@@ -142,7 +142,7 @@ Workflow: `.github/workflows/publish-npm.yml` in this repo.
 
 **Requires:** repository secret `NPM_TOKEN` (npm Automation token).
 
-**Release process:** bump `version` in `package.json`, commit, push to `main`. CI publishes `@pathway/design-system@<version>`. Pushes without a version bump skip publish (no failed job).
+**Release process:** bump `version` in `package.json`, commit, push to `main`. CI publishes `@pathway-sg/design-system@<version>`. Pushes without a version bump skip publish (no failed job).
 
 ---
 
@@ -173,9 +173,9 @@ Not published: `ARCHITECTURE.md`, `PUBLISHING.md`, scripts (validation runs loca
 |-------|-----|
 | `ENEEDAUTH` / `need auth` in GitHub Actions | Add repository secret **`NPM_TOKEN`** (npm **Automation** token). `NODE_AUTH_TOKEN` must be set when `setup-node` runs — see `.github/workflows/publish-npm.yml` |
 | `402 Payment Required` on publish | Use `--access public` for scoped package |
-| `403 Forbidden` / scope | Token user must be a member of npm org `@pathway` with publish rights |
+| `403 Forbidden` / scope | Token user must be a member of npm org **pathway-sg** with publish rights |
 | App build: cannot resolve module | Run `npm install`; check version exists on npm |
-| App build: syntax error in node_modules | Add `transpilePackages: ["@pathway/design-system"]` |
+| App build: syntax error in node_modules | Add `transpilePackages: ["@pathway-sg/design-system"]` |
 | `ERESOLVE` peer deps | Install matching `@chakra-ui/react`, `next`, `react` in the app |
 
 ---
