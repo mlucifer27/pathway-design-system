@@ -1,5 +1,6 @@
 import { Box, Flex, type FlexProps } from "@chakra-ui/react";
 import type { ReactNode } from "react";
+import { NETFUSION_REFERENCE } from "../../tokens/netfusion-reference";
 import { MarketingBackgroundOrbs } from "./MarketingBackgroundOrbs";
 
 export type MarketingPublicShellProps = {
@@ -20,8 +21,19 @@ export function MarketingPublicShell({
   resolvedTheme,
   mainProps,
 }: MarketingPublicShellProps) {
+  const isLight = resolvedTheme === "light";
+
   return (
-    <Flex direction="column" minH="100vh" w="full" bg="bg.DEFAULT" position="relative">
+    <Flex
+      direction="column"
+      minH="100vh"
+      w="full"
+      bg="bg.DEFAULT"
+      backgroundImage={isLight ? NETFUSION_REFERENCE.lightCanvasGradient : undefined}
+      backgroundAttachment="fixed"
+      backgroundSize="cover"
+      position="relative"
+    >
       <MarketingBackgroundOrbs variant={orbsVariant} resolvedTheme={resolvedTheme} />
       {header}
       <Flex as="main" flex="1" w="full" direction="column" position="relative" zIndex={1} {...mainProps}>

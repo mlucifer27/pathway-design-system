@@ -20,6 +20,7 @@ export function MarketingBackgroundOrbs({
     ? NETFUSION_REFERENCE.orbOpacityLight
     : NETFUSION_REFERENCE.orbOpacity;
   const secondaryOpacity = isLight ? NETFUSION_REFERENCE.orbOpacityLightSecondary : 0.2;
+  const centerOpacity = isLight ? NETFUSION_REFERENCE.orbOpacityLightCenter : 0;
 
   return (
     <Box
@@ -30,6 +31,23 @@ export function MarketingBackgroundOrbs({
       zIndex={0}
       aria-hidden="true"
     >
+      {isLight ? (
+        <Box
+          className="blur-shape"
+          position="absolute"
+          top="42%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          w="613px"
+          h="613px"
+          maxW="95vw"
+          maxH="75vh"
+          bg="brand.500"
+          opacity={centerOpacity}
+          filter={`blur(${ORB_BLUR_PX})`}
+          borderRadius="full"
+        />
+      ) : null}
       <Box
         className="blur-shape"
         position="absolute"

@@ -12,6 +12,13 @@ export const pathwayGlobalCss = {
     lineHeight: "24px",
     minHeight: "100%",
   },
+  "html.light body": {
+    backgroundColor: NETFUSION_REFERENCE.lightCanvas,
+    backgroundImage: NETFUSION_REFERENCE.lightCanvasGradient,
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    backgroundSize: "cover",
+  },
   body: { overflowX: "clip" },
   "h1, h2, h3, h4, h5, h6": {
     fontFamily: "heading",
@@ -106,7 +113,12 @@ export const pathwayGlobalCss = {
       "linear-gradient(280.36deg, transparent 20.42%, rgba(2, 193, 115, 0.4) 84.24%), linear-gradient(0deg, transparent, transparent)",
     color: "brand.fg",
   },
-  ".light .netfusion-info-card, .light .netfusion-price-card": {
+  "html.light .glass-panel": {
+    background: NETFUSION_REFERENCE.glassGradientLight,
+    borderColor: "rgba(15, 23, 42, 0.07)",
+    boxShadow: "0 1px 0 rgba(15, 23, 42, 0.04), 0 10px 28px rgba(2, 193, 115, 0.07)",
+  },
+  "html.light .netfusion-info-card, html.light .netfusion-price-card": {
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: "rgba(15, 23, 42, 0.08)",
