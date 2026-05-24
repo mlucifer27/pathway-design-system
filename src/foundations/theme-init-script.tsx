@@ -1,23 +1,30 @@
 import { PATHWAY_THEME_STORAGE_KEY } from "./theme-storage";
+import { buildThemeInitScriptBody } from "./theme-persistence";
 
 /** Inline script for `app/layout.tsx` — prevents theme flash before React hydrates. */
 export function buildThemeInitScriptHtml(
   storageKey: string = PATHWAY_THEME_STORAGE_KEY,
+  cookieDomain?: string,
 ): string {
-  return `(function(){try{var k=${JSON.stringify(storageKey)};var t=localStorage.getItem(k)||"system";var r=t==="system"?(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"):t;document.documentElement.classList.remove("light","dark");document.documentElement.classList.add(r);document.documentElement.dataset.theme=r;document.documentElement.style.colorScheme=r;}catch(e){}})();`;
+  return `(function(){${buildThemeInitScriptBody(storageKey, cookieDomain)}})();`;
 }
 
 export type PathwayThemeInitScriptProps = {
   storageKey?: string;
+  /** Override parent cookie domain (e.g. staging). Omit to auto-detect `.pathwaysg.net`. */
+  cookieDomain?: string;
 };
 
 export function PathwayThemeInitScript({
   storageKey = PATHWAY_THEME_STORAGE_KEY,
+  cookieDomain,
 }: PathwayThemeInitScriptProps) {
   return (
     <script
       suppressHydrationWarning
-      dangerouslySetInnerHTML={{ __html: buildThemeInitScriptHtml(storageKey) }}
+      dangerouslySetInnerHTML={{
+        __html: buildThemeInitScriptHtml(storageKey, cookieDomain),
+      }}
     />
   );
 }

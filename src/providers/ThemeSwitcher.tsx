@@ -1,16 +1,15 @@
 "use client";
 
 import { Box, Icon, IconButton, Menu, Portal } from "@chakra-ui/react";
-import { LuCheck, LuMonitor, LuMoon, LuSun } from "react-icons/lu";
+import { LuCheck, LuMoon, LuSun } from "react-icons/lu";
 import { useColorMode } from "./color-mode";
 
 const OPTIONS = [
-  { value: "system", label: "System", icon: LuMonitor },
-  { value: "light", label: "Light", icon: LuSun },
   { value: "dark", label: "Dark", icon: LuMoon },
+  { value: "light", label: "Light", icon: LuSun },
 ] as const;
 
-/** Fixed bottom-right theme menu — System / Light / Dark. */
+/** Fixed bottom-right theme menu — Dark (default) / Light. */
 export function PathwayThemeSwitcher() {
   const { theme, setTheme } = useColorMode();
   const activeOption =

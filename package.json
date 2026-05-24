@@ -1,6 +1,6 @@
 {
   "name": "@pathway-sg/design-system",
-  "version": "0.1.16",
+  "version": "0.1.18",
   "description": "Pathway platform design system — Chakra theme, tokens, and shared UI (Netfusion-aligned brand layer)",
   "repository": {
     "type": "git",

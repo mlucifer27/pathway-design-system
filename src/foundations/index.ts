@@ -1,5 +1,15 @@
 export { PATHWAY_THEME_STORAGE_KEY } from "./theme-storage";
 export {
+  buildThemeInitScriptBody,
+  normalizeThemeChoice,
+  PATHWAY_THEME_COOKIE_MAX_AGE_SECONDS,
+  PATHWAY_THEME_COOKIE_PARENT_DOMAIN,
+  persistThemePreference,
+  readThemePreference,
+  resolvePathwayThemeCookieDomain,
+  type ThemeChoice,
+} from "./theme-persistence";
+export {
   buildThemeInitScriptHtml,
   PathwayThemeInitScript,
   type PathwayThemeInitScriptProps,
