@@ -4,6 +4,12 @@ const fadeUpY = `${NETFUSION_REFERENCE.fadeUpTranslatePx}px`;
 
 /** Chakra `globalCss` — literal Netfusion Home1 / style.css mapping. */
 export const pathwayGlobalCss = {
+  html: {
+    colorScheme: "dark",
+  },
+  "html.light": {
+    colorScheme: "light",
+  },
   "html, body": {
     backgroundColor: "bg.DEFAULT",
     color: "fg.DEFAULT",

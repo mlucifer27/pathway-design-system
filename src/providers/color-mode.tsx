@@ -11,6 +11,7 @@ import {
 } from "react";
 import {
   normalizeThemeChoice,
+  PATHWAY_DEFAULT_THEME,
   persistThemePreference,
   readThemePreference,
   type ThemeChoice,
@@ -49,8 +50,8 @@ export function ColorModeProvider({
   storageKey = PATHWAY_THEME_STORAGE_KEY,
   cookieDomain,
 }: ColorModeProviderProps) {
-  const [theme, setThemeState] = useState<ThemeChoice>("dark");
-  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>("dark");
+  const [theme, setThemeState] = useState<ThemeChoice>(PATHWAY_DEFAULT_THEME);
+  const [resolvedTheme, setResolvedTheme] = useState<ResolvedTheme>(PATHWAY_DEFAULT_THEME);
 
   const syncFromStorage = useCallback(() => {
     const stored = readThemePreference(storageKey, cookieDomain);

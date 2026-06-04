@@ -2,6 +2,7 @@ export { PATHWAY_THEME_STORAGE_KEY } from "./theme-storage";
 export {
   buildThemeInitScriptBody,
   normalizeThemeChoice,
+  PATHWAY_DEFAULT_THEME,
   PATHWAY_THEME_COOKIE_MAX_AGE_SECONDS,
   PATHWAY_THEME_COOKIE_PARENT_DOMAIN,
   persistThemePreference,
@@ -9,6 +10,10 @@ export {
   resolvePathwayThemeCookieDomain,
   type ThemeChoice,
 } from "./theme-persistence";
+export {
+  pathwayRootHtmlAttributes,
+  pathwayRootHtmlClassName,
+} from "./theme-html";
 export {
   buildThemeInitScriptHtml,
   PathwayThemeInitScript,

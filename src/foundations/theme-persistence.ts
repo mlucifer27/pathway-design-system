@@ -2,6 +2,9 @@ import { PATHWAY_THEME_STORAGE_KEY } from "./theme-storage";
 
 export type ThemeChoice = "light" | "dark";
 
+/** Default for new visitors — never follows OS `prefers-color-scheme`. */
+export const PATHWAY_DEFAULT_THEME: ThemeChoice = "dark";
+
 /** Parent domain for theme cookie — matches API `AUTH_COOKIE_DOMAIN` in production. */
 export const PATHWAY_THEME_COOKIE_PARENT_DOMAIN = ".pathwaysg.net";
 
@@ -11,7 +14,7 @@ export function normalizeThemeChoice(stored: string | null | undefined): ThemeCh
   if (stored === "light" || stored === "dark") {
     return stored;
   }
-  return "dark";
+  return PATHWAY_DEFAULT_THEME;
 }
 
 /** Resolves cookie Domain= for cross-subdomain theme sync. */
@@ -65,7 +68,7 @@ export function readThemePreference(
   cookieDomain?: string,
 ): ThemeChoice {
   if (typeof document === "undefined") {
-    return "dark";
+    return PATHWAY_DEFAULT_THEME;
   }
   const domain = resolvePathwayThemeCookieDomain(
     window.location.hostname,
