@@ -35,7 +35,7 @@ export function PublicSiteHeader({
   return (
     <Box
       as="header"
-      className="glass-panel"
+      className="glass-panel marketing-site-header"
       borderRadius="0"
       borderTopWidth="0"
       borderLeftWidth="0"

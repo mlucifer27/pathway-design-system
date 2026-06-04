@@ -37,7 +37,7 @@ export function IconTileGrid({
   };
 
   return (
-    <MarketingSection animate={false}>
+    <MarketingSection animate={false} surface="band">
       <SectionHeaderBlock
         shortLabel={shortLabel}
         title={title}

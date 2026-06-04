@@ -22,7 +22,14 @@ export function MarketingHero({
   const isCenter = align === "center";
 
   return (
-    <Box as="section" position="relative" pt={marketingHeroPt} pb={marketingHeroPb} px="4">
+    <Box
+      as="section"
+      className="marketing-hero"
+      position="relative"
+      pt={marketingHeroPt}
+      pb={marketingHeroPb}
+      px="4"
+    >
       <Container maxW="6xl" textAlign={isCenter ? "center" : "left"}>
         <Box
           className="animate-slide-in-down"

@@ -119,25 +119,94 @@ export const pathwayGlobalCss = {
       "linear-gradient(280.36deg, transparent 20.42%, rgba(2, 193, 115, 0.4) 84.24%), linear-gradient(0deg, transparent, transparent)",
     color: "brand.fg",
   },
+  "html.light .marketing-section-band": {
+    backgroundImage: NETFUSION_REFERENCE.lightSectionBandGradient,
+    borderTopWidth: "1px",
+    borderBottomWidth: "1px",
+    borderColor: "rgba(15, 23, 42, 0.08)",
+  },
+  "html.light .marketing-section-spotlight": {
+    backgroundImage:
+      "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(2, 193, 115, 0.06) 0%, transparent 70%)",
+  },
+  "html.light .marketing-hero": {
+    position: "relative",
+  },
   "html.light .glass-panel": {
     background: NETFUSION_REFERENCE.glassGradientLight,
+    backdropFilter: "blur(14px)",
+    WebkitBackdropFilter: "blur(14px)",
     borderColor: "rgba(15, 23, 42, 0.1)",
     boxShadow:
       "0 1px 0 rgba(15, 23, 42, 0.05), 0 12px 32px rgba(15, 23, 42, 0.08)",
   },
+  "html.light .marketing-site-header": {
+    background: "rgba(255, 255, 255, 0.78)",
+    backdropFilter: "blur(16px)",
+    WebkitBackdropFilter: "blur(16px)",
+    borderBottomColor: "rgba(15, 23, 42, 0.1)",
+    boxShadow: NETFUSION_REFERENCE.lightHeaderShadow,
+  },
+  "html.light .marketing-feature-card": {
+    background: "#FFFFFF",
+    borderTopWidth: "3px",
+    borderTopStyle: "solid",
+    borderTopColor: NETFUSION_REFERENCE.primaryColor,
+    borderColor: "rgba(15, 23, 42, 0.1)",
+    boxShadow: NETFUSION_REFERENCE.lightCardShadow,
+    transition: "transform 0.35s ease-out, box-shadow 0.35s ease-out",
+  },
+  "html.light .marketing-feature-card:hover": {
+    transform: "translateY(-3px)",
+    boxShadow: NETFUSION_REFERENCE.lightCardShadowHover,
+  },
+  "html.light .marketing-feature-card h3": {
+    fontWeight: "700",
+  },
+  "html.light .marketing-cta-panel": {
+    backgroundImage: NETFUSION_REFERENCE.lightCtaBandGradient,
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: "rgba(2, 193, 115, 0.22)",
+    boxShadow: NETFUSION_REFERENCE.lightCardShadow,
+  },
   "html.light .netfusion-info-card, html.light .netfusion-price-card": {
+    background: "#FFFFFF",
     borderWidth: "1px",
     borderStyle: "solid",
     borderColor: "rgba(15, 23, 42, 0.1)",
-    boxShadow: "0px 14px 36px 0px rgba(15, 23, 42, 0.08)",
+    boxShadow: NETFUSION_REFERENCE.lightCardShadow,
+    transition: "transform 0.35s ease-out, box-shadow 0.35s ease-out",
+  },
+  "html.light .netfusion-info-card:hover, html.light .netfusion-price-card:hover": {
+    transform: "translateY(-4px)",
+    boxShadow: NETFUSION_REFERENCE.lightCardShadowHover,
+  },
+  "html.light .netfusion-icon-box": {
+    backgroundImage: NETFUSION_REFERENCE.lightIconBoxGradient,
+    color: "#FFFFFF",
+    boxShadow: "0 10px 28px rgba(2, 120, 72, 0.28)",
   },
   "html.light .marketing-accent": {
-    color: NETFUSION_REFERENCE.lightBrandAccent,
+    backgroundImage: `linear-gradient(120deg, ${NETFUSION_REFERENCE.lightBrandAccent} 0%, #02A862 55%, ${NETFUSION_REFERENCE.primaryColor} 100%)`,
+    backgroundClip: "text",
+    WebkitBackgroundClip: "text",
+    color: "transparent",
   },
   "html.light .marketing-short-label": {
+    color: "#FFFFFF",
+    borderWidth: "0",
+    backgroundImage: NETFUSION_REFERENCE.lightIconBoxGradient,
+    boxShadow: "0 4px 14px rgba(2, 120, 72, 0.28)",
+    letterSpacing: "0.02em",
+    textTransform: "uppercase",
+    fontSize: "11px",
+  },
+  "html.light a:not([data-theme='button'])": {
+    color: "rgba(15, 23, 42, 0.72)",
+  },
+  "html.light a:not([data-theme='button']):hover": {
     color: NETFUSION_REFERENCE.lightBrandAccent,
-    borderColor: "rgba(10, 92, 58, 0.35)",
-    backgroundColor: "rgba(10, 92, 58, 0.06)",
   },
   "*": { borderColor: "border.DEFAULT" },
   "::selection": {

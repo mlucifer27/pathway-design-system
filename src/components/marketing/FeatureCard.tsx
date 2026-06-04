@@ -48,7 +48,7 @@ export function FeatureCard({
   stacked: _stacked = true,
 }: FeatureCardProps & { stacked?: boolean }) {
   return (
-    <Box className="glass-panel" rounded="panel" p={{ base: "8", md: "10" }} h="full">
+    <Box className="glass-panel marketing-feature-card" rounded="panel" p={{ base: "8", md: "10" }} h="full">
       <Flex align="flex-start" gap={{ base: "4", md: "8" }} direction={{ base: "column", md: "row" }}>
         {IconComponent ? (
           <Flex

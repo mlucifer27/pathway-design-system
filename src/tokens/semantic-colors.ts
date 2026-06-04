@@ -9,7 +9,7 @@ export const pathwaySemanticColorTokens = {
     DEFAULT: { value: { _light: lightBg, _dark: darkBg } },
     canvas: { value: "transparent" },
     section: {
-      value: { _light: "#EEF2F0", _dark: darkBg },
+      value: { _light: "#E4EBE8", _dark: darkBg },
     },
     subtle: {
       value: { _light: "rgba(15, 23, 42, 0.04)", _dark: "rgba(255, 255, 255, 0.02)" },
@@ -54,10 +54,10 @@ export const pathwaySemanticColorTokens = {
       value: { _light: "#0F172A", _dark: NETFUSION_REFERENCE.textHeadingDark },
     },
     muted: {
-      value: { _light: "rgba(15, 23, 42, 0.72)", _dark: NETFUSION_REFERENCE.textMutedDark },
+      value: { _light: "rgba(15, 23, 42, 0.78)", _dark: NETFUSION_REFERENCE.textMutedDark },
     },
     subtle: {
-      value: { _light: "rgba(15, 23, 42, 0.45)", _dark: "rgba(255, 255, 255, 0.4)" },
+      value: { _light: "rgba(15, 23, 42, 0.58)", _dark: "rgba(255, 255, 255, 0.4)" },
     },
     inverse: { value: { _light: "#FFFFFF", _dark: darkBg } },
   },
@@ -67,7 +67,7 @@ export const pathwaySemanticColorTokens = {
     },
     netfusion: {
       value: {
-        _light: "rgba(15, 23, 42, 0.08)",
+        _light: "rgba(15, 23, 42, 0.12)",
         _dark: NETFUSION_REFERENCE.borderSubtle,
       },
     },

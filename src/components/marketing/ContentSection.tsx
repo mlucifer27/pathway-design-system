@@ -18,7 +18,7 @@ export function ContentSection({
   children,
 }: ContentSectionProps) {
   return (
-    <MarketingSection maxW="4xl" animate={false}>
+    <MarketingSection maxW="4xl" animate={false} surface="band">
       <SectionHeaderBlock
         shortLabel={shortLabel}
         title={title}

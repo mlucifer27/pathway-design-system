@@ -1,6 +1,9 @@
 export { MarketingBackgroundOrbs } from "./MarketingBackgroundOrbs";
 export { MarketingSection } from "./MarketingSection";
-export type { MarketingSectionProps } from "./MarketingSection";
+export type {
+  MarketingSectionProps,
+  MarketingSectionSurface,
+} from "./MarketingSection";
 export { MarketingPublicShell } from "./MarketingPublicShell";
 export type { MarketingPublicShellProps } from "./MarketingPublicShell";
 export {

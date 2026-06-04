@@ -2,6 +2,7 @@
 
 import { Box } from "@chakra-ui/react";
 import { NETFUSION_REFERENCE } from "../../tokens/netfusion-reference";
+import { MarketingLightAtmosphere } from "./MarketingLightAtmosphere";
 
 export type MarketingBackgroundOrbsProps = {
   variant?: "global" | "auth";
@@ -31,20 +32,34 @@ export function MarketingBackgroundOrbs({
       zIndex={0}
       aria-hidden="true"
     >
+      {isLight ? <MarketingLightAtmosphere /> : null}
       {isLight ? (
         <Box
           className="blur-shape"
           position="absolute"
-          top="42%"
+          top="8%"
           left="50%"
-          transform="translate(-50%, -50%)"
-          w="613px"
-          h="613px"
-          maxW="95vw"
-          maxH="75vh"
-          bg="brand.500"
+          transform="translate(-50%, 0)"
+          w="720px"
+          h="420px"
+          maxW="100vw"
+          bg="brand.400"
           opacity={centerOpacity}
           filter={`blur(${ORB_BLUR_PX})`}
+          borderRadius="full"
+        />
+      ) : null}
+      {isLight ? (
+        <Box
+          className="blur-shape"
+          position="absolute"
+          top="0"
+          right="0"
+          w="360px"
+          h="360px"
+          bg={NETFUSION_REFERENCE.pageBgAccent}
+          opacity={0.06}
+          filter="blur(120px)"
           borderRadius="full"
         />
       ) : null}

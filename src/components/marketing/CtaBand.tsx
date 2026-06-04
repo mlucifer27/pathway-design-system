@@ -14,7 +14,7 @@ export function CtaBand({ title, description, actions, footer }: CtaBandProps) {
   return (
     <MarketingSection animate={false}>
       <Box
-        className="glass-panel animate-fade-up"
+        className="glass-panel marketing-cta-panel animate-fade-up"
         rounded="panel"
         py={{ base: "12", md: "16" }}
         px={{ base: "6", md: "10" }}
