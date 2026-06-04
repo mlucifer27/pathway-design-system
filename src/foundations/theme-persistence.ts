@@ -2,8 +2,11 @@ import { PATHWAY_THEME_STORAGE_KEY } from "./theme-storage";
 
 export type ThemeChoice = "light" | "dark";
 
-/** Default for new visitors — never follows OS `prefers-color-scheme`. */
+/** Default theme — also the only active theme while light mode is disabled. */
 export const PATHWAY_DEFAULT_THEME: ThemeChoice = "dark";
+
+/** When true, stored light prefs are ignored and rewritten to dark. */
+export const PATHWAY_THEME_LOCK_TO_DARK = true;
 
 /** Parent domain for theme cookie — matches API `AUTH_COOKIE_DOMAIN` in production. */
 export const PATHWAY_THEME_COOKIE_PARENT_DOMAIN = ".pathwaysg.net";
@@ -11,6 +14,9 @@ export const PATHWAY_THEME_COOKIE_PARENT_DOMAIN = ".pathwaysg.net";
 export const PATHWAY_THEME_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365;
 
 export function normalizeThemeChoice(stored: string | null | undefined): ThemeChoice {
+  if (PATHWAY_THEME_LOCK_TO_DARK) {
+    return PATHWAY_DEFAULT_THEME;
+  }
   if (stored === "light" || stored === "dark") {
     return stored;
   }
@@ -74,6 +80,15 @@ export function readThemePreference(
     window.location.hostname,
     cookieDomain,
   );
+  if (PATHWAY_THEME_LOCK_TO_DARK) {
+    const fromCookie = readThemeFromCookie(storageKey, document.cookie);
+    const fromStorage = readThemeFromLocalStorage(storageKey);
+    if (fromCookie === "light" || fromStorage === "light") {
+      persistThemePreference(PATHWAY_DEFAULT_THEME, storageKey, cookieDomain);
+    }
+    return PATHWAY_DEFAULT_THEME;
+  }
+
   const fromCookie = readThemeFromCookie(storageKey, document.cookie);
   const normalizedCookie = normalizeThemeChoice(fromCookie);
   if (fromCookie === "light" || fromCookie === "dark") {
@@ -147,13 +162,8 @@ var explicitDom=${explicitJson};
 var parentDom=${parentDomainJson};
 var host=location.hostname;
 var dom=explicitDom||(host==="pathwaysg.net"||host.length>13&&host.slice(-13)===".pathwaysg.net"?parentDom:"");
-var t=null;
-var prefix=k+"=";
-var parts=document.cookie?document.cookie.split("; "):[];
-for(var i=0;i<parts.length;i++){var p=parts[i];if(p.indexOf(prefix)===0){try{t=decodeURIComponent(p.slice(prefix.length))}catch(e){t=p.slice(prefix.length)}break}}
-if(t!=="light"&&t!=="dark"){try{t=localStorage.getItem(k)}catch(e){}}
-if(t!=="light"&&t!=="dark")t="dark";
-if(dom&&(t==="light"||t==="dark")){
+var t="dark";
+if(dom){
 var sec=location.protocol==="https:"?"; Secure":"";
 document.cookie=k+"="+encodeURIComponent(t)+"; path=/; max-age=${maxAge}; SameSite=Lax"+sec+"; domain="+dom;
 try{localStorage.setItem(k,t)}catch(e){}

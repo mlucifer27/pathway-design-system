@@ -3,6 +3,7 @@ export {
   buildThemeInitScriptBody,
   normalizeThemeChoice,
   PATHWAY_DEFAULT_THEME,
+  PATHWAY_THEME_LOCK_TO_DARK,
   PATHWAY_THEME_COOKIE_MAX_AGE_SECONDS,
   PATHWAY_THEME_COOKIE_PARENT_DOMAIN,
   persistThemePreference,

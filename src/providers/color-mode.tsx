@@ -88,11 +88,11 @@ export function ColorModeProvider({
   }, [cookieDomain, storageKey]);
 
   const setTheme = useCallback(
-    (next: ThemeChoice) => {
-      setThemeState(next);
-      persistThemePreference(next, storageKey, cookieDomain);
-      setResolvedTheme(next);
-      applyResolvedTheme(next);
+    (_next: ThemeChoice) => {
+      setThemeState(PATHWAY_DEFAULT_THEME);
+      persistThemePreference(PATHWAY_DEFAULT_THEME, storageKey, cookieDomain);
+      setResolvedTheme(PATHWAY_DEFAULT_THEME);
+      applyResolvedTheme(PATHWAY_DEFAULT_THEME);
     },
     [cookieDomain, storageKey],
   );
