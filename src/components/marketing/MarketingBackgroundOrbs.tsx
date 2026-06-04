@@ -69,7 +69,7 @@ export function MarketingBackgroundOrbs({
         w={isLight ? "520px" : "400px"}
         h={isLight ? "520px" : "400px"}
         maxW="85vw"
-        bg={isLight ? "brand.300" : "brand.500"}
+        bg={isLight ? "brand.400" : "brand.500"}
         opacity={secondaryOpacity}
         filter="blur(200px)"
         borderRadius="full"

@@ -9,7 +9,7 @@ export const pathwaySemanticColorTokens = {
     DEFAULT: { value: { _light: lightBg, _dark: darkBg } },
     canvas: { value: "transparent" },
     section: {
-      value: { _light: "#ECF4F1", _dark: darkBg },
+      value: { _light: "#EEF2F0", _dark: darkBg },
     },
     subtle: {
       value: { _light: "rgba(15, 23, 42, 0.04)", _dark: "rgba(255, 255, 255, 0.02)" },
@@ -95,10 +95,27 @@ export const pathwaySemanticColorTokens = {
   },
   brand: {
     solid: { value: "{colors.brand.500}" },
-    contrast: { value: darkBg },
-    fg: { value: "{colors.brand.500}" },
-    muted: { value: "rgba(2, 193, 115, 0.15)" },
-    subtle: { value: "rgba(2, 193, 115, 0.25)" },
+    contrast: {
+      value: { _light: "#FFFFFF", _dark: darkBg },
+    },
+    fg: {
+      value: {
+        _light: NETFUSION_REFERENCE.lightBrandAccent,
+        _dark: "{colors.brand.500}",
+      },
+    },
+    muted: {
+      value: {
+        _light: "rgba(10, 92, 58, 0.12)",
+        _dark: "rgba(2, 193, 115, 0.15)",
+      },
+    },
+    subtle: {
+      value: {
+        _light: "rgba(10, 92, 58, 0.2)",
+        _dark: "rgba(2, 193, 115, 0.25)",
+      },
+    },
     hover: { value: "{colors.brand.400}" },
     focusRing: { value: NETFUSION_REFERENCE.shadowBrand },
   },

@@ -115,14 +115,23 @@ export const pathwayGlobalCss = {
   },
   "html.light .glass-panel": {
     background: NETFUSION_REFERENCE.glassGradientLight,
-    borderColor: "rgba(15, 23, 42, 0.07)",
-    boxShadow: "0 1px 0 rgba(15, 23, 42, 0.04), 0 10px 28px rgba(2, 193, 115, 0.07)",
+    borderColor: "rgba(15, 23, 42, 0.1)",
+    boxShadow:
+      "0 1px 0 rgba(15, 23, 42, 0.05), 0 12px 32px rgba(15, 23, 42, 0.08)",
   },
   "html.light .netfusion-info-card, html.light .netfusion-price-card": {
     borderWidth: "1px",
     borderStyle: "solid",
-    borderColor: "rgba(15, 23, 42, 0.08)",
-    boxShadow: "0px 12px 32px 0px rgba(15, 23, 42, 0.06)",
+    borderColor: "rgba(15, 23, 42, 0.1)",
+    boxShadow: "0px 14px 36px 0px rgba(15, 23, 42, 0.08)",
+  },
+  "html.light .marketing-accent": {
+    color: NETFUSION_REFERENCE.lightBrandAccent,
+  },
+  "html.light .marketing-short-label": {
+    color: NETFUSION_REFERENCE.lightBrandAccent,
+    borderColor: "rgba(10, 92, 58, 0.35)",
+    backgroundColor: "rgba(10, 92, 58, 0.06)",
   },
   "*": { borderColor: "border.DEFAULT" },
   "::selection": {
